@@ -1,5 +1,5 @@
 #Up For Grabs
-**Description text hurr**
+**Work in progress**
 
 This app is designed to solve the problem of an overcrowded closet... which is a problem I have. So very bad. Anywhoooooo ugh. SOO:
 
