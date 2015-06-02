@@ -90,7 +90,7 @@ All Guest features, plus:
 
 #####ERD
 
-![img](./img/UpForGrabsERD.png)
+![img](/img/UpForGrabsERD.png)
 
 ####Technologies
 
