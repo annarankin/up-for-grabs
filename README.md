@@ -76,21 +76,41 @@ All Guest features, plus:
 ####Data Structure
 
 #####Resources:
-  - User Accounts
+  - **User Accounts**
     - Favorites
     - Wishlist Items
-    - User's Own Closets
-    - User's Own Clothing Items
-  - All Closets
-  - All Items
+    - User's Closets
+    - User's Clothing Items
+  - **Closets**
+    - Closet's Clothing Items
+  - **Clothing Items**
     - Item Tags
-  - All Tags
-  - Messages
+  - **Tags**
+  - **Messages**
 
 
 #####ERD
 
-![img](/img/UpForGrabsERD.png)
+![img](./img/UpForGrabsERD.png)
+
+#####API Routes
+
+*Users*
+
+| HTTP Verb | Route | Description |
+| ------------- | ------------- |
+| GET | "/api/users" | Returns a list of all users. |
+| POST | "/api/users" | Creates a new user in the database. |
+| GET | "/api/user/:id" | Returns a single user's data. |
+| PUT | "/api/user/:id" | Updates an existing user in the database. |
+| DELETE | "/api/user/:id" | Deletes a user from the database. |
+
+*Closets*
+
+| HTTP Verb | Route | Description |
+| ------------- | ------------- | -- |
+| GET | "/api/closets" | Returns all closets in DB. |
+| PUT | "/api/closets" | Creates a new closet. |
 
 ####Technologies
 
