@@ -97,13 +97,14 @@ All Guest features, plus:
 Server Side - Ruby Gems
 
 - sendgrid
-- mustache
-- jQuery
-- backbone & underscore
 - Ruby on Rails (zoooom)
 - paperclip
 
 Client Side JS
+
+- mustache
+- jQuery
+- backbone & underscore
 
 CSS
 
