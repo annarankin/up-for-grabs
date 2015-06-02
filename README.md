@@ -1,9 +1,9 @@
 #Up For Grabs
 **Work in progress**
 
-This app is designed to solve the problem of an overcrowded closet... which is a problem I have. So very bad. Anywhoooooo ugh. SOO:
+<!-- This app is designed to solve the problem of an overcrowded closet... which is a problem I have. So very bad. Anywhoooooo ugh. SOO:
 
-An application for cataloging(sp??), sharing, and ultimately getting rid of unwanted clothing items.
+An application for cataloging(sp??), sharing, and ultimately getting rid of unwanted clothing items. -->
 
 ##Specifications
 
@@ -106,5 +106,3 @@ Client Side JS
 CSS
 
 - [Pure CSS](http://purecss.io/)
-
-(http://cdn.jsdelivr.net/pure/0.6.0/base-context.css)
