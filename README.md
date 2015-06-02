@@ -88,7 +88,9 @@ All Guest features, plus:
   - Messages
 
 
-#####Entity Relationship Diagram
+#####ERD
+
+![img](./img/UpForGrabsERD.png)
 
 ####Technologies
 
