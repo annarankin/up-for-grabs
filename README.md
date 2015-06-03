@@ -105,6 +105,7 @@ All Guest features, plus:
 | PUT | "/api/users/:id" | Updates an existing user in the database. |
 | DELETE | "/api/users/:id" | Deletes a user from the database. |
 
+
 | HTTP Verb | Route | Description |
 | -- | -- | -- |
 | GET | "/api/user" | Returns the logged in user's data. |
