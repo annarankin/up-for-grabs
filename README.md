@@ -108,23 +108,12 @@ All Guest features, plus:
 
 | HTTP Verb | Route | Description |
 | --------- | ----- | ----------- |
-| GET | "/api/users" | Returns a list of all users. |
-| POST | "/api/users" | Creates a new user in the database. |
-| GET | "/api/users/:id" | Returns a single user's data. |
-| PUT | "/api/users/:id" | Updates an existing user in the database. |
-| DELETE | "/api/users/:id" | Deletes a user from the database. |
-
-
-<!-- ---
-
-| HTTP Verb | Route | Description |
-| -- | -- | -- |
 | GET | "/api/user" | Returns the logged in user's data. |
 | GET | "/api/user/closets" | Returns all of the logged in user's closets. |
 | GET | "/api/user/closets" | Returns all of the logged in user's closets. |
 | GET | "/api/user/favorites" | Returns all of a specific user's favorite closets. |
 | GET | "/api/user/wishlist" | Returns all items the user has added to their wishlist. |
-| GET | "/api/user/messages" | Returns all messages sent by and to the user. | -->
+| GET | "/api/user/messages" | Returns all messages sent by and to the user. |
 
 
 *Closets*
