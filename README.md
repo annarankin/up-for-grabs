@@ -108,8 +108,7 @@ All Guest features, plus:
 
 | HTTP Verb | Route | Description |
 | --------- | ----- | ----------- |
-| GET | "/api/user" | Returns the logged in user's data. |
-| GET | "/api/user/closets" | Returns all of the logged in user's closets. |
+| GET | "/api/user" | Returns the logged in user's profile data. |
 | GET | "/api/user/closets" | Returns all of the logged in user's closets. |
 | GET | "/api/user/favorites" | Returns all of a specific user's favorite closets. |
 | GET | "/api/user/wishlist" | Returns all items the user has added to their wishlist. |
