@@ -121,6 +121,25 @@ All Guest features, plus:
 | DELETE | "/api/closets/:id" | Deletes an existing closet. | -->
 
 
+####Wireframes
+**Guest Views**
+
+| Home Page | Signup Page | Login Page |
+| --- |
+| ![img](./img/Guest Home.png) |  ![img](./img/New Account.png) | ![img](./img/Login.png) |
+
+**User Views**
+
+| Profile Page |
+| --- |
+| ![img](./img/Profile Show.png) |
+
+| My Closet - Main | My Closet - View Item |
+| --- |
+| ![img](./img/My Closets View.png) |  ![img](./img/My Closets - View Item.png) |
+| My Closet - Add Item | My Closet - Edit Item |
+| ![img](./img/My Closets - Add New Item.png) | ![img](./img/My Closets - Edit Item.png) |
+
 ####Technologies
 
 Server Side - Ruby Gems
