@@ -93,7 +93,7 @@ All Guest features, plus:
 
 ![img](./img/UpForGrabsERD.png)
 
-<!-- #####API Routes
+#####API Routes
 
 *Users*
 
@@ -101,13 +101,18 @@ All Guest features, plus:
 | --------- | ----- | ----------- |
 | GET | "/api/users" | Returns a list of all users. |
 | POST | "/api/users" | Creates a new user in the database. |
-| GET | "/api/user/:id" | Returns a single user's data. |
-| PUT | "/api/user/:id" | Updates an existing user in the database. |
-| DELETE | "/api/user/:id" | Deletes a user from the database. |
-| GET | "/api/user/:id/closets" | Returns all of a specific user's closets. |
-| GET | "/api/user/:id/favorites" | Returns all of a specific user's favorite closets. |
-| GET | "/api/user/:id/wishlist" | Returns all items the user has added to their wishlist. |
-| GET | "/api/user/:id/messages" | Returns all messages sent by the user. |
+| GET | "/api/users/:id" | Returns a single user's data. |
+| PUT | "/api/users/:id" | Updates an existing user in the database. |
+| DELETE | "/api/users/:id" | Deletes a user from the database. |
+
+| HTTP Verb | Route | Description |
+| -- | -- | -- |
+| GET | "/api/user" | Returns the logged in user's data. |
+| GET | "/api/user/closets" | Returns all of the logged in user's closets. |
+| GET | "/api/user/closets" | Returns all of the logged in user's closets. |
+| GET | "/api/user/favorites" | Returns all of a specific user's favorite closets. |
+| GET | "/api/user/wishlist" | Returns all items the user has added to their wishlist. |
+| GET | "/api/user/messages" | Returns all messages sent by and to the user. |
 
 
 *Closets*
@@ -115,11 +120,28 @@ All Guest features, plus:
 | HTTP Verb | Route | Description |
 | --------- | ----- | ----------- |
 | GET | "/api/closets" | Returns all closets in DB. |
-| PUT | "/api/closets" | Creates a new closet. |
+| POST | "/api/closets" | Creates a new closet. |
 | GET | "/api/closet/:id" | Returns information about a specific closet and general info about its contents. |
 | PUT | "/api/closets/:id" | Updates an existing closet. |
-| DELETE | "/api/closets/:id" | Deletes an existing closet. | -->
+| DELETE | "/api/closets/:id" | Deletes an existing closet. |
 
+*Items*
+
+| HTTP Verb | Route | Description |
+| --------- | ----- | ----------- |
+| GET | "/api/items" | Returns all clothing items in DB. |
+| GET | "/api/items/:id" | Returns all clothing items in DB. |
+| GET | "/api/closets/:id/items" | Returns the items within a particular closet. |
+| POST | "/api/items" | Creates a new item. |
+| PUT | "/api/items/:id" | Updates an item. |
+| DELETE | "/api/items/:id" | Deletes an item. |
+
+*Messages*
+
+| HTTP Verb | Route | Description |
+| --------- | ----- | ----------- |
+| POST | "/api/messages" | Creates a new message. |
+| DELETE | "/api/messages/:id" | Deletes a message. |
 
 ####Wireframes
 **Guest Views**
