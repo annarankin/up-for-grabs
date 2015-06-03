@@ -140,6 +140,22 @@ All Guest features, plus:
 | My Closet - Add Item | My Closet - Edit Item |
 | ![img](./img/My Closets - Add New Item.png) | ![img](./img/My Closets - Edit Item.png) |
 
+| Browse Clothing - Search | Browse Clothing - View Item |
+| --- |
+| ![img](./img/Browse Clothing.png) |  ![img](./img/Browse Clothing - Item View.png) |
+
+| Wishlist - Search | Wishlist - View Item |
+| --- |
+| ![img](./img/Wishlist.png) |  ![img](./img/Wishlist - Item View.png) |
+
+| Other User's Closet |
+| --- |
+| ![img](./img/Other User's Closet View.png) |
+
+| Inbox View |
+| --- |
+| ![img](./img/Inbox View.png) |
+
 ####Technologies
 
 Server Side - Ruby Gems
