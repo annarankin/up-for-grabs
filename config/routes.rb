@@ -3,7 +3,31 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'welcome#index'
+
+  # Signup page.
+  # resources :users, only: [:new]
+  get "/signup" => 'users#new', as: :new_user
+
+  resource :login, only: [:create, :destroy]
+  get "/login" => 'logins#index', as: :new_login
+
+
+  #   namespace :admin do
+  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # (app/controllers/admin/products_controller.rb)
+  #     resources :products
+  #   end
+
+
+
+
+
+
+
+
+
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

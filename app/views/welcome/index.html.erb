@@ -1,0 +1,8 @@
+
+  hi there <%= @current_user.name %>!
+
+  <form action="/login" method="POST">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Logout">
+  </form>

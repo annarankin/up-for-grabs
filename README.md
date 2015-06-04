@@ -192,9 +192,9 @@ All Guest features, plus:
 
 Server Side - Ruby Gems
 
-- sendgrid
+- [SendGrid](http://sendgrid.com)
 - Ruby on Rails (zoooom)
-- paperclip
+- [paperclip](https://github.com/thoughtbot/paperclip)
 
 Client Side JS
 

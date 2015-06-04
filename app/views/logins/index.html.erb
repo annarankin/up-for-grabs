@@ -1,0 +1,20 @@
+
+  Hey guestie. Log in mofo:
+
+  <% if @message %>
+    <p><%= @message %></p>
+  <% end %>
+
+
+  <%= form_tag({controller: "logins", action: "create"}, method: "post") do |f| %>
+
+    <%= label_tag :email, "Email" %>
+    <%= text_field_tag :email, 'your email heeer' %>
+    <%= label_tag :password, "Password" %>
+    <%= password_field_tag :password %>
+
+    <%= submit_tag "Go!" %>
+  
+  <% end %>
+
+  <%= button_to "Sign up", new_user_path, method: :get %>
