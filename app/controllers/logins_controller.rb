@@ -1,6 +1,6 @@
 class LoginsController < ApplicationController
 
-  def index 
+  def index
 
   end
 
@@ -13,7 +13,7 @@ class LoginsController < ApplicationController
     else
       puts "User #{params[:email]} not found."
       @message = "NOOPE"
-      render :new
+      render :index
     end
   end
 

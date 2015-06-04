@@ -18,7 +18,10 @@ class User < ActiveRecord::Base
   # Setting up paperclip to work with AWS
   has_attached_file :avatar,
                     storage: :s3,
-                    s3_credentials: {:bucket => "up-for-grabs", :access_key_id => ENV['S3_KEY'], :secret_access_key => ENV['S3_SECRET']}
+                    s3_credentials: {:bucket => "up-for-grabs", :access_key_id => ENV['S3_KEY'], :secret_access_key => ENV['S3_SECRET']},
+                    :styles => { :medium => "300x300>", :thumb => "100x100>" },
+                    :default_url => "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 # Trying first with a hash
   # def s3_credentials
   #   {:bucket => "xxx", :access_key_id => "xxx", :secret_access_key => "xxx"}

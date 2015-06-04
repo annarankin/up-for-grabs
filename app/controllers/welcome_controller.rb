@@ -11,6 +11,7 @@ class WelcomeController < ApplicationController
   end
 
   def signup
+    @user = User.new
     render :signup
   end
 

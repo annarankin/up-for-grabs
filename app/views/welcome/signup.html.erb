@@ -1,1 +1,21 @@
-HELLO SIGN UP HERRRREEERR
+<h1>HELLO SIGN UP HERRRREEERR</h1>
+
+
+<%= form_for @user, url: api_users_path, method: "post", html: {multipart: true} do |f| %>
+
+    <%= f.label :email, "Email:" %>
+    <%= f.text_field :email %>
+    <%= f.label :password, "Password:" %>
+    <%= f.password_field :password %>
+    <%= f.label :name, "Display Name:" %>
+    <%= f.text_field :name %>
+    <%= f.label :location, "Your location:" %>
+    <%= f.text_field :location %>
+    <%= f.label :about_me, "About You!:" %>
+    <%= f.text_field :about_me %>
+    <%= f.label :avatar, "Avatar Image:" %>
+    <%= f.file_field :avatar %>
+
+  <%= submit_tag "Go!" %>
+
+<% end %>

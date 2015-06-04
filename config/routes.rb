@@ -7,17 +7,17 @@ Rails.application.routes.draw do
 
   # Signup page.
   # resources :users, only: [:new]
-  get "/signup" => 'users#new', as: :new_user
+  get "/signup" => 'welcome#signup', as: :sign_up
 
   resource :login, only: [:create, :destroy]
   get "/login" => 'logins#index', as: :new_login
 
 
-  #   namespace :admin do
+    namespace :api do
   #     # Directs /admin/products/* to Admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+      resource :users
+    end
 
 
 
