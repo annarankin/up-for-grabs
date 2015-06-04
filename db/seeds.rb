@@ -6,9 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create([{email: 'bobby@digital.dev', name: 'BobbyDigiDev' , location: 'NYC, New York', about_me: 'Awesome person with awesome taste in hats', password: 'KNOPE' },
+users = User.create([
+    {email: 'bobby@digital.dev', name: 'BobbyDigiDev' , location: 'NYC, New York', about_me: 'Awesome person with awesome taste in hats', password: 'KNOPE' },
     {email: 'liz@cat.lady' , name: 'FonSUAVEca' , location: 'NYC' , about_me: 'KITTIIEESSS', password: 'KNOPE' },
-    {email: 'simmy@simmysimmysimmy.more' , name: 'SimCity' , location: 'NYC' , about_me: 'Simmy simmy simmy simmy simmy simmy simmy', password: 'KNOPE' }])
+    {email: 'simmy@simmysimmysimmy.more' , name: 'SimCity' , location: 'NYC' , about_me: 'Simmy simmy simmy simmy simmy simmy simmy', password: 'KNOPE' }
+    ])
 
 
 Closet.create([
@@ -18,11 +20,11 @@ Closet.create([
   ])
 
 Item.create([
-    {closet_id: 1, type: 'hat', size: 'One Size', color: 'black', description: 'Super cool hat I got as a wedding present', expiration_date: '2015-07-04 00:00:00' },
-    {closet_id: 1, type: 'shirt', size: 'M' , color: 'red', description: 'This is my favorite shurt', expiration_date: '2015-07-04 00:00:00' },
-    {closet_id: 2, type: 'shoes', size: 'S', color: 'red', description: 'I don\'t wear shoes anymore these are ok' , expiration_date: '2015-07-04 00:00:00' },
-    {closet_id: 2, type: 'dress', size: 'S', color: 'green' , description: 'I used to like this dress more, have\'nt worn it in like two years', expiration_date: '2015-07-04 00:00:00' },
-    {closet_id: 3, type: 'shirt', size: 'S', color: 'black', description: 'Winky face ;)', expiration_date: '2015-07-04 00:00:00' }
+    {closet_id: 1, clothing_type: 'hat', size: 'One Size', color: 'black', description: 'Super cool hat I got as a wedding present', expiration_date: '2015-07-04 00:00:00' },
+    {closet_id: 1, clothing_type: 'shirt', size: 'M' , color: 'red', description: 'This is my favorite shurt', expiration_date: '2015-07-04 00:00:00' },
+    {closet_id: 2, clothing_type: 'shoes', size: 'S', color: 'red', description: 'I don\'t wear shoes anymore these are ok' , expiration_date: '2015-07-04 00:00:00' },
+    {closet_id: 2, clothing_type: 'dress', size: 'S', color: 'green' , description: 'I used to like this dress more, have\'nt worn it in like two years', expiration_date: '2015-07-04 00:00:00' },
+    {closet_id: 3, clothing_type: 'shirt', size: 'S', color: 'black', description: 'Winky face ;)', expiration_date: '2015-07-04 00:00:00' }
   ])
 
 Wishlist.create([
@@ -71,5 +73,5 @@ Message.create([
   {user_id: 2, sender_id: 3, message:"Hi Liz I am Simmy and not a robot imposter"},
   {user_id: 2, sender_id: 1, message:"omfg Liz. Seriously."},
   {user_id: 3, sender_id: 2, message:"Cool! Take my social security number and my credit card!"},
-  {user_id: 3, sender_id: 2, message:"Oh hey btw SIMMY SIMMY SIMMY SIMMY SIMMY SIMMY"},
+  {user_id: 3, sender_id: 2, message:"Oh hey btw SIMMY SIMMY SIMMY SIMMY SIMMY SIMMY"}
   ])
