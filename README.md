@@ -100,7 +100,7 @@ All Guest features, plus:
 | HTTP Verb | Route | Description |
 | --------- | ----- | ----------- |
 | GET | "/api/users" | Returns a list of all users. |
-| POST | "/api/users" | Creates a new user in the database. |
+| POST | "/api/users" | Creates a new user in the database, sets the session, redirects to root. |
 | GET | "/api/users/:id" | Returns a single user's data. |
 | PUT | "/api/users/:id" | Updates an existing user in the database. |
 | DELETE | "/api/users/:id" | Deletes a user from the database. |
@@ -142,6 +142,16 @@ All Guest features, plus:
 | --------- | ----- | ----------- |
 | POST | "/api/messages" | Creates a new message. |
 | DELETE | "/api/messages/:id" | Deletes a message. |
+
+####Browser Routes
+
+| HTTP Verb | Route | Description |
+| --------- | ----- | ----------- |
+| GET | "/" | Hits welcome#index controller. Renders either logged-in user view or guest view. |
+| GET | "/signup" | Hits welcome#new controller. Renders signup form page. |
+| GET | "/login" | Hits welcome#create controller. Creates a new session with user ID, redirects to root. |
+<!-- | POST | "/users" | Hits users#create controller. Creates a new user and new session | -->
+
 
 ####Wireframes
 **Guest Views**
