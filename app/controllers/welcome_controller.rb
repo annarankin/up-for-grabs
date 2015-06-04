@@ -6,7 +6,7 @@ class WelcomeController < ApplicationController
       puts "User ID: #{session[:user_id]}"
       render :index
     else
-      redirect_to new_login_path
+      render :guest_index
     end
   end
 
