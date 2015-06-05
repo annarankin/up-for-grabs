@@ -8,6 +8,24 @@ module Api
       redirect_to :root
     end
 
+    def show
+      if current_user 
+        user = User.find(@current_user.id)
+        render json: user.to_json({
+          only: [:email, :name, :location, :about_me, :id],
+          include: {
+            wishlist_items: {},
+            favorite_closets: {},
+            closets: {},
+            items: {}
+          },
+          methods: :avatar
+        })
+      else
+        render plain: "User not found."
+      end
+    end
+
     private
     def user_params
       params.require(:user).permit(:name, :email, :password, :location, :about_me, :avatar)

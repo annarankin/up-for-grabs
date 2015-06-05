@@ -12,12 +12,17 @@ Rails.application.routes.draw do
   resource :login, only: [:create, :destroy]
   get "/login" => 'logins#index', as: :new_login
 
-
-    namespace :api do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-      resource :users
+  namespace :api do
+    resource :users, except: [:new, :edit] do
+      resources :closets, except: [:new, :edit]
+      resources :wishlists, except: [:new, :edit, :update]
+      resources :favorites, except: [:new, :edit, :update]
+      resources :messages, except: [:new, :edit, :update]
     end
+    resources :closets, except: [:new, :edit]
+    resources :items, except: [:new, :edit]
+    resources :tags, except: [:new, :edit, :update]
+  end
 
 
 

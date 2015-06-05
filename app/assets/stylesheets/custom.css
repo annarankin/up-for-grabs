@@ -1,0 +1,67 @@
+.pure-g > div {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.l-box {
+    padding: 1em;
+}
+body {
+  background: #f1c40f;
+}
+.custom-menu {
+  background: #000;
+}
+.custom-menu a {
+  color: #fff; 
+}
+.custom-menu a:hover {
+  color: #000; 
+}
+.menu-logo {
+  font-weight: bold;
+}
+.main-content{
+  max-width: 95%;
+  margin: 0 auto;
+  background: #fff;
+}
+.welcome {
+  background: #d35400;
+  color: #fff;
+}
+.welcome .intro-img {
+  background: url('http://www.hercampus.com/sites/default/files/2014/04/04/Brandfield-Harvey.Closet%20Keeping%202_1.jpg') no-repeat center;
+  background-size: cover;
+  min-height: 125px;
+}
+.welcome .intro-text h1, .welcome .intro-text p {
+  margin: 25px;
+}
+.welcome h1 {
+  font-family: 'Megrim', cursive;
+}
+.item-header {
+  text-align: center;
+}
+.item-header h1 {
+  font-family: 'Megrim', cursive;
+}
+.items {
+  width: 100%;
+}
+.card {
+  background: #ecf0f1;
+  min-height: 300px;
+  margin: 5px;
+}
+
+.card .image {
+  height: 200px;
+  background-size: cover;
+  margin: .5em;
+}
+.card p {
+  margin: .7em;
+  font-size: .8em;
+}

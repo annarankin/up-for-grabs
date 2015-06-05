@@ -2,13 +2,45 @@
 <html>
 <head>
   <title>UpForGrabs</title>
+  <!-- Sets the width of the screen to be equal to the width of the viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css">
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+<link href='http://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
-<%= yield %>
+<!-- Menu bar -->
+<div class="custom-menu pure-menu pure-menu-horizontal">
+  <a href="#" class="pure-menu-heading pure-menu-link"><i class="fa fa-exchange"></i><span class="menu-logo"> Up For Grabs</span></a>
+  <ul class="menu-right pure-menu-list">
+      <li class="pure-menu-item"><a href="#" class="pure-menu-link">About</a></li>
+      <li class="pure-menu-item"><a href="<%= sign_up_path %>" class="pure-menu-link">Sign up</a></li>
+      <li class="pure-menu-item"><a href="#" class="pure-menu-link">Log In</a></li>
+  </ul>
+</div>
+
+
+<!-- Main content here -->
+<div class="pure-g">
+  <div class="main-content pure-u-1-1">
+      
+  <%= yield %>
+
+    <footer class="pure-g">
+      <div class="pure-u-1">
+        <p>Created by an Annamul</p>
+      </div>
+    </footer>
+  </div>
+</div>
 
 </body>
 </html>
+
+<!-- hosh kunai - don't want -->
