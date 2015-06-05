@@ -35,7 +35,7 @@ body {
   background-size: cover;
   min-height: 125px;
 }
-.welcome .intro-text h1, .welcome .intro-text p {
+.welcome .intro-text h1, .welcome .intro-text h2, .welcome .intro-text p {
   margin: 25px;
 }
 .welcome h1 {
@@ -68,4 +68,15 @@ body {
 footer {
   text-align: center;
   color: #CCC;
+}
+
+.user-content {
+  background: #fff;
+  word-wrap: break-word;
+}
+.menu-list {
+  background: #2c3e50;
+}
+.menu-item {
+  word-wrap: break-word;
 }

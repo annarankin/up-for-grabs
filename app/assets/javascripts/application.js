@@ -21,5 +21,7 @@
 //= require_tree ./backbone/collections/
 //= require ./backbone/views/ItemView/
 //= require ./backbone/views/GuestView/
+//= require ./backbone/views/UserProfileView/
+//= require ./backbone/views/LoginView/
 //= require ./backbone/views/ItemCollectionView/
 //= require_tree ./backbone/router/

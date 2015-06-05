@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resource :login, only: [:create, :destroy]
   get "/login" => 'logins#index', as: :new_login
+  get "/logout" => 'logins#destroy', as: :logout
 
   namespace :api do
     resource :users, except: [:new, :edit] do
