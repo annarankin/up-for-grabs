@@ -65,3 +65,7 @@ body {
   margin: .7em;
   font-size: .8em;
 }
+footer {
+  text-align: center;
+  color: #CCC;
+}

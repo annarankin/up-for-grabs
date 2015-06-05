@@ -3,7 +3,12 @@ module Api
 
     def index 
       items = Item.all
-      render json: items.to_json
+      render json: items.to_json({
+        include: { user: 
+            { only: [:name, :id] }
+          },
+        methods: :photo
+        })
     end
 
     def show
@@ -12,7 +17,7 @@ module Api
         include: { user: 
             { only: [:name, :id] }
           },
-        methods: :avatar
+        methods: :photo
         })
     end
 

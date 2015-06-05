@@ -6,7 +6,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css">
+ 
+<!-- TEMPLATES -->
 
+<!-- Card Template -->
+<script type="text/template" data-template="item-card" >
+  
+    <div class="card">
+      <div class="image" style="background : url('{{photo}}');">
+      </div>
+      <div class="info">
+        <p>{{description}}</p>
+        <p>{{color}} {{clothing_type}}, Size {{size}}</p>
+        <p><i class="fa fa-user"></i> {{user.name}}</p>
+      </div>
+    </div>
+  
+</script>
+
+<!-- Guest View Page -->
+
+<script type="text-template" data-template="guest-index">
+  
+  <div class="pure-g">
+    <!-- 'about' splash banner thing -->
+    <div class="welcome pure-u-1">
+      <div class="pure-g">
+
+        <section class="intro-text pure-u-1 pure-u-md-2-3">
+          <h1>Find a new home for your unwanted clothing.</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae temporibus omnis vel illo, perspiciatis doloribus nisi, deserunt minus nemo, ipsum totam sed asperiores alias, voluptas non officia qui nihil eos.</p>
+        </section>
+        <section class="intro-img pure-u-1 pure-u-md-1-3"></section>
+      </div>  
+    </div>
+  </div>
+
+  <div class="pure-g">
+    <section class="item-header pure-u-1">
+      <h1>Recently Added Items</h1>
+    </section>
+    <section id="guest-items-view" class="items pure-g">
+    </section>
+  </div>
+
+</script>
+
+ <!-- Links and whatnot -->
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -25,16 +71,15 @@
   </ul>
 </div>
 
-
 <!-- Main content here -->
 <div class="pure-g">
-  <div class="main-content pure-u-1-1">
+  <div id="main-content" class="main-content pure-u-1-1">
       
   <%= yield %>
 
     <footer class="pure-g">
       <div class="pure-u-1">
-        <p>Created by an Annamul</p>
+        <p>Footer footer footer footer footer fooooter</p>
       </div>
     </footer>
   </div>

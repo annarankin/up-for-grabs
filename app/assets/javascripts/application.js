@@ -14,11 +14,12 @@
 //= require jquery_ujs
 //= require ./libraries/underscore
 //= require ./libraries/backbone
+//= require ./libraries/mustache
 
 //= require ./backbone/app
 //= require_tree ./backbone/models/
 //= require_tree ./backbone/collections/
-//= require_tree ./backbone/views/
+//= require ./backbone/views/ItemView/
+//= require ./backbone/views/GuestView/
+//= require ./backbone/views/ItemCollectionView/
 //= require_tree ./backbone/router/
-
-//= require_tree .
