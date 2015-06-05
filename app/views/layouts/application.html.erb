@@ -74,15 +74,31 @@
 
 <script type="text/template" data-template="signup-form">
   
-  <form action="/login" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="oXM4SNnhH1uq/VSskuUxD5NgM3mJ2jO2mO9EZJXyWwwR1BPJ1KbeWRSwK5VzHz12JmPOgXUxI+dLzbAc0QGqpQ==" />
-
-      <label for="email">Email</label>
-      <input type="text" name="email" id="email" value="your email heeer" />
-      <label for="password">Password</label>
-      <input type="password" name="password" id="password" />
-
-      <input type="submit" name="commit" value="Go!" />
+  <form enctype="multipart/form-data" action="/api/users" accept-charset="UTF-8" method="post">
     
+    <input name="utf8" type="hidden" value="&#x2713;" />
+    <input type="hidden" name="authenticity_token" value="oXM4SNnhH1uq/VSskuUxD5NgM3mJ2jO2mO9EZJXyWwwR1BPJ1KbeWRSwK5VzHz12JmPOgXUxI+dLzbAc0QGqpQ==" />
+
+    <label for="email">Email</label>
+    <input type="text" name="user[email]" id="email" value="your email heeer" />
+
+    <label for="password">Password</label>
+    <input type="password" name="user[password]" id="password" />
+
+    <label>Display Name:</label>
+    <input type="text" name="user[name]" id="name" />
+
+    <label>Location:</label>
+    <input type="text" name="user[location]" id="location" />
+
+    <label>Tell us aboot yerself:</label>
+    <input type="textarea" name="user[about_me]" id="about_me" />
+
+    <label>Avatar Image:</label>
+    <input type="file" name="user[avatar]" %>
+
+    <input type="submit" value="Go!" />
+  
   </form>
   <form class="button_to" method="get" action="/signup"><input type="submit" value="Sign up" /></form>
 </script>
