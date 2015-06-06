@@ -58,7 +58,8 @@ SwapApp.Routers.Router = Backbone.Router.extend({
     $("#main-content").empty();
     console.log('user closet route hit')
     var menuView = new SwapApp.Views.MenuView({model: SwapApp.currentUser, el: $('#main-content')})
-    var closetsView = new SwapApp.Views.UserClosetsView({model: SwapApp.currentUser, el: $('#user-content')})
+    var userClosets = new SwapApp.Collections.ClosetCollection({url: '/api/users/closets'})
+    var closetsView = new SwapApp.Views.UserClosetsView({collection: userClosets, el: $('#user-content')})
   },
   allClosets: function() {
     console.log('all closets route hit')

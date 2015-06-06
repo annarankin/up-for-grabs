@@ -27,7 +27,6 @@ SwapApp.Views.ProfileView = Backbone.View.extend({
     console.log('saved!')
 
     var formParams = {}
-    // formParams.user = {}
     formParams.name = $("#name").val()
     formParams.email = $("#email").val()
     formParams.location = $("#location").val()
