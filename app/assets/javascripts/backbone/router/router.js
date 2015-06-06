@@ -14,6 +14,9 @@ SwapApp.Routers.Router = Backbone.Router.extend({
     '': 'index',
     'login' : 'login',
     'signup' : 'signup',
+    'closets' : 'allClosets',
+    'user/closets' : 'userClosets',
+    'closets/:id' : 'showCloset'
   },
   index: function(){
     //check if user is logged in or nawt,
@@ -50,5 +53,17 @@ SwapApp.Routers.Router = Backbone.Router.extend({
     $("#main-content").empty();
     console.log('hit login route')
     var signupPageView = new SwapApp.Views.SignupView({el: $('#main-content')})
-  }
+  },
+  userClosets: function() {
+    $("#main-content").empty();
+    console.log('user closet route hit')
+    var menuView = new SwapApp.Views.MenuView({model: SwapApp.currentUser, el: $('#main-content')})
+    var closetsView = new SwapApp.Views.UserClosetsView({model: SwapApp.currentUser, el: $('#user-content')})
+  },
+  allClosets: function() {
+    console.log('all closets route hit')
+  },
+  showCloset: function() {
+    console.log('single closet route hit')
+  },
 })

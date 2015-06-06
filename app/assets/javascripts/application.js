@@ -20,6 +20,7 @@
 //= require_tree ./backbone/models/
 //= require_tree ./backbone/collections/
 //= require ./backbone/views/MenuView/
+//= require ./backbone/views/UserClosetsView/
 //= require ./backbone/views/ItemView/
 //= require ./backbone/views/GuestView/
 //= require ./backbone/views/UserProfileView/
