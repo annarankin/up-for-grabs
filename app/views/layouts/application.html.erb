@@ -13,7 +13,7 @@
 <script type="text/template" data-template="item-card" >
   
     <div class="card">
-      <div class="image" style="background : url('{{photo}}');">
+      <div class="image" style="background : url('{{photo}}') no-repeat center; background-size: cover;;">
       </div>
       <div class="info">
         <p>{{description}}</p>
@@ -55,7 +55,9 @@
 <!-- Login Form template -->
 <script type="text/template" data-template="login-form">
   
-  <form action="/login" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="oXM4SNnhH1uq/VSskuUxD5NgM3mJ2jO2mO9EZJXyWwwR1BPJ1KbeWRSwK5VzHz12JmPOgXUxI+dLzbAc0QGqpQ==" />
+    <form action="/login" accept-charset="UTF-8" method="post">
+      <input name="utf8" type="hidden" value="&#x2713;" />
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" />
 
       <label for="email">Email</label>
       <input type="text" name="email" id="email" value="your email heeer" />
@@ -112,8 +114,8 @@
         <h1>Welcome, {{name}}!</h1>
       </section>
       <section class="pure-g">
-        <nav class="pure-menu pure-u-1-3">
-          <ul class="menu-list pure-menu-list">
+        <nav class="menu-list pure-menu pure-u-1-3">
+          <ul class=" pure-menu-list">
             <li class="menu-item pure-menu-item"><a class="pure-menu-link">Profile</a></li>
             <li class="menu-item pure-menu-item"><a class="pure-menu-link">My Closets</a></li>
             <li class="menu-item pure-menu-item"><a class="pure-menu-link">Browse Clothing</a></li>
@@ -124,10 +126,27 @@
         </nav>
         <!-- User profile content here -->
         <div id="user-content" class="user-content pure-u-2-3">
+          <div class="pure-g">
+            <div style="background : url('{{avatar}}') no-repeat center; background-size: cover;" class="profile-image pure-u-1-4"></div>
+            <div class="user-info pure-u-3-4">
+              <h1>Display Name: {{name}}</h1>
+              <h3>Email address: {{email}}</h3>
+            </div>
+          </div>  
+          <div class="pure-g">
+            <div class="pure-u-1">
+              <h3>Location: {{location}}</h3>
+              <h3>About Me:</h3>
+              <p> {{about_me}}</p>
+              <h3>My Closets:</h3>
+              {{#closets}}
+                <a href="#/closets/{{id}}">{{name}}</a>
+              {{/closets}}
+            </div>
+          </div>
+
         </div>
-      </section>
-      <section class="user-profile pure-g">
-        
+      </section>        
     </script>
 
 
