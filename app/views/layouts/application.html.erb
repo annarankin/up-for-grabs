@@ -79,7 +79,7 @@
     <form enctype="multipart/form-data" action="/api/users" accept-charset="UTF-8" method="post">
 
       <input name="utf8" type="hidden" value="&#x2713;" />
-      <input type="hidden" name="authenticity_token" value="oXM4SNnhH1uq/VSskuUxD5NgM3mJ2jO2mO9EZJXyWwwR1BPJ1KbeWRSwK5VzHz12JmPOgXUxI+dLzbAc0QGqpQ==" />
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" />
 
       <label for="email">Email</label>
       <input type="text" name="user[email]" id="email" value="your email heeer" />
@@ -130,6 +130,51 @@
   </div>
 </script>
 
+<!-- Edit User Profile Template -->
+
+<script type="text/template" data-template="user-profile-edit">
+
+    <div class="pure-g">
+      <div style="background : url('{{avatar}}') no-repeat center; background-size: cover;" class="profile-image pure-u-1-4">
+    </div>
+
+    <div class="user-info pure-u-3-4">
+      <form class="pure-form pure-form-stacked" >
+        
+        <label for="name">Display Name:
+          <input class="pure-input-1" type="text" name="user[name]" id="name" value="{{name}}" />
+        </label>
+        <label for="email">Email address:
+          <input class="pure-input-1" type="text" name="user[email]" id="email" value="{{email}}" />
+        </label>
+
+
+      <label for="location">Location:
+        <input class="pure-input-1" type="text" name="user[location]" id="location" value="{{location}}" />
+      </label>
+
+      <label for="about_me">About Me:
+        <input class="pure-input-1" type="textarea" name="user[about_me]" id="about_me" value="{{about_me}}" />
+      </label>
+
+
+      <input data-action="save-profile" type="submit" value="Save changes">
+
+    </div>
+  
+  </form>
+  <form class="pure-form" enctype="multipart/form-data" action="/api/users" accept-charset="UTF-8" method="post">
+      <input name="utf8" type="hidden" value="&#x2713;" />
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" />
+      <input name="_method" type="hidden" value="put">
+      <label for="avatar">Avatar Image:
+        <input class="pure-input-1" type="file" name="user[avatar]" id="avatar" %>
+      </label>  
+      <input type="submit">
+
+  </form>
+</script>
+
 
 <!-- Sidebar Menu Template (includes empty user-content div)  -->
 <script type="text/template" data-template="menu-template">
@@ -138,8 +183,8 @@
     <h1>Welcome, {{name}}!</h1>
   </section>
   <section class="pure-g">
-    <nav class="menu-list pure-menu pure-u-1-3">
-      <ul class=" pure-menu-list">
+    <nav class="menu-list pure-menu pure-u-1 pure-u-md-1-4 ">
+      <ul class="menu-ul pure-menu-list">
         <li class="menu-item pure-menu-item"><a class="pure-menu-link">Profile</a></li>
         <li class="menu-item pure-menu-item"><a class="pure-menu-link">My Closets</a></li>
         <li class="menu-item pure-menu-item"><a class="pure-menu-link">Browse Clothing</a></li>
@@ -149,7 +194,7 @@
       </ul>
     </nav>
     <!-- User profile content here -->
-    <div id="user-content" class="user-content pure-u-2-3">
+    <div id="user-content" class="user-content pure-u-1 pure-u-md-3-4">
 
     </div>
   </section>        

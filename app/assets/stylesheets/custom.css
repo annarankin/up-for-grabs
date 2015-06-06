@@ -75,10 +75,15 @@ footer {
   word-wrap: break-word;
 }
 .menu-list {
-  background: #2c3e50;
+  background: #e74c3c;
+  width: 10em;
 }
-.menu-item {
+.menu-item a {
+  color: #fff;
   word-wrap: break-word;
+}
+.menu-item a:hover {
+  color: #000;
 }
 .user-info {
   padding: 0 1em;
@@ -89,3 +94,14 @@ footer {
 .user-content {
   padding: 2em;
 }
+
+
+
+@media (max-width: 767px) {
+  .menu-ul {
+   columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  }
+}
+
