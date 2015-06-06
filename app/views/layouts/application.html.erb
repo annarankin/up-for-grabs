@@ -6,12 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css">
- 
-<!-- TEMPLATES -->
 
-<!-- Card Template -->
-<script type="text/template" data-template="item-card" >
-  
+  <!-- TEMPLATES -->
+
+  <!-- Card Template -->
+  <script type="text/template" data-template="item-card" >
+
     <div class="card">
       <div class="image" style="background : url('{{photo}}') no-repeat center; background-size: cover;;">
       </div>
@@ -21,40 +21,40 @@
         <p><i class="fa fa-user"></i> {{user.name}}</p>
       </div>
     </div>
-  
-</script>
 
-<!-- Guest View Page -->
+  </script>
 
-<script type="text-template" data-template="guest-index">
-  
-  <div class="pure-g">
-    <!-- 'about' splash banner thing -->
-    <div class="welcome pure-u-1">
-      <div class="pure-g">
+  <!-- Guest View Page -->
 
-        <section class="intro-text pure-u-1 pure-u-md-2-3">
-          <h1>Find a new home for your unwanted clothing.</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae temporibus omnis vel illo, perspiciatis doloribus nisi, deserunt minus nemo, ipsum totam sed asperiores alias, voluptas non officia qui nihil eos.</p>
-        </section>
-        <section class="intro-img pure-u-1 pure-u-md-1-3"></section>
-      </div>  
+  <script type="text-template" data-template="guest-index">
+
+    <div class="pure-g">
+      <!-- 'about' splash banner thing -->
+      <div class="welcome pure-u-1">
+        <div class="pure-g">
+
+          <section class="intro-text pure-u-1 pure-u-md-2-3">
+            <h1>Find a new home for your unwanted clothing.</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae temporibus omnis vel illo, perspiciatis doloribus nisi, deserunt minus nemo, ipsum totam sed asperiores alias, voluptas non officia qui nihil eos.</p>
+          </section>
+          <section class="intro-img pure-u-1 pure-u-md-1-3"></section>
+        </div>  
+      </div>
     </div>
-  </div>
 
-  <div class="pure-g">
-    <section class="item-header pure-u-1">
-      <h1>Recently Added Items</h1>
-    </section>
-    <section id="guest-items-view" class="items pure-g">
-    </section>
-  </div>
+    <div class="pure-g">
+      <section class="item-header pure-u-1">
+        <h1>Recently Added Items</h1>
+      </section>
+      <section id="guest-items-view" class="items pure-g">
+      </section>
+    </div>
 
-</script>
+  </script>
 
-<!-- Login Form template -->
-<script type="text/template" data-template="login-form">
-  
+  <!-- Login Form template -->
+  <script type="text/template" data-template="login-form">
+
     <form action="/login" accept-charset="UTF-8" method="post">
       <input name="utf8" type="hidden" value="&#x2713;" />
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" />
@@ -65,135 +65,141 @@
       <input type="password" name="password" id="password" />
 
       <input type="submit" name="commit" value="Go!" />
-    
-  </form>
-  <form class="button_to" method="get" action="/signup"><input type="submit" value="Sign up" /></form>
+
+    </form>
+    <form class="button_to" method="get" action="/signup"><input type="submit" value="Sign up" /></form>
+  </script>
+
+
+
+  <!-- Signup form template -->
+
+  <script type="text/template" data-template="signup-form">
+
+    <form enctype="multipart/form-data" action="/api/users" accept-charset="UTF-8" method="post">
+
+      <input name="utf8" type="hidden" value="&#x2713;" />
+      <input type="hidden" name="authenticity_token" value="oXM4SNnhH1uq/VSskuUxD5NgM3mJ2jO2mO9EZJXyWwwR1BPJ1KbeWRSwK5VzHz12JmPOgXUxI+dLzbAc0QGqpQ==" />
+
+      <label for="email">Email</label>
+      <input type="text" name="user[email]" id="email" value="your email heeer" />
+
+      <label for="password">Password</label>
+      <input type="password" name="user[password]" id="password" />
+
+      <label>Display Name:</label>
+      <input type="text" name="user[name]" id="name" />
+
+      <label>Location:</label>
+      <input type="text" name="user[location]" id="location" />
+
+      <label>Tell us aboot yerself:</label>
+      <input type="textarea" name="user[about_me]" id="about_me" />
+
+      <label>Avatar Image:</label>
+      <input type="file" name="user[avatar]" %>
+
+      <input type="submit" value="Go!" />
+
+    </form>
+    <form class="button_to" method="get" action="/signup"><input type="submit" value="Sign up" /></form>
+  </script>
+
+
+  <!-- User Profile View Template -->
+
+<script type="text/template" data-template="user-profile">
+  <div class="pure-g">
+    <div style="background : url('{{avatar}}') no-repeat center; background-size: cover;" class="profile-image pure-u-1-4"></div>
+    <div class="user-info pure-u-3-4">
+      <h3>Display Name:<br/> {{name}}</h3>
+      <h3>Email address:<br/> {{email}}</h3>
+    </div>
+  </div>  
+  <div class="pure-g">
+    <div class="pure-u-1">
+      <h3>Location: {{location}}</h3>
+      <h3>About Me:</h3>
+      <p> {{about_me}}</p>
+      <h3>My Closets:</h3>
+      {{#closets}}
+      <a href="#/closets/{{id}}">{{name}}</a>
+      {{/closets}}
+      <button data-action="edit-profile">Edit Profile</button>
+    </div>
+  </div>
+</script>
+
+
+<!-- Sidebar Menu Template (includes empty user-content div)  -->
+<script type="text/template" data-template="menu-template">
+
+  <section class="welcome intro-text pure-u-1">
+    <h1>Welcome, {{name}}!</h1>
+  </section>
+  <section class="pure-g">
+    <nav class="menu-list pure-menu pure-u-1-3">
+      <ul class=" pure-menu-list">
+        <li class="menu-item pure-menu-item"><a class="pure-menu-link">Profile</a></li>
+        <li class="menu-item pure-menu-item"><a class="pure-menu-link">My Closets</a></li>
+        <li class="menu-item pure-menu-item"><a class="pure-menu-link">Browse Clothing</a></li>
+        <li class="menu-item pure-menu-item"><a class="pure-menu-link">Wishlists</a></li>
+        <li class="menu-item pure-menu-item"><a class="pure-menu-link">Favorite Closets</a></li>
+        <li class="menu-item pure-menu-item"><a class="pure-menu-link">Inbawks</a></li>
+      </ul>
+    </nav>
+    <!-- User profile content here -->
+    <div id="user-content" class="user-content pure-u-2-3">
+
+    </div>
+  </section>        
 </script>
 
 
 
-<!-- Signup form template -->
-
-<script type="text/template" data-template="signup-form">
-  
-  <form enctype="multipart/form-data" action="/api/users" accept-charset="UTF-8" method="post">
-    
-    <input name="utf8" type="hidden" value="&#x2713;" />
-    <input type="hidden" name="authenticity_token" value="oXM4SNnhH1uq/VSskuUxD5NgM3mJ2jO2mO9EZJXyWwwR1BPJ1KbeWRSwK5VzHz12JmPOgXUxI+dLzbAc0QGqpQ==" />
-
-    <label for="email">Email</label>
-    <input type="text" name="user[email]" id="email" value="your email heeer" />
-
-    <label for="password">Password</label>
-    <input type="password" name="user[password]" id="password" />
-
-    <label>Display Name:</label>
-    <input type="text" name="user[name]" id="name" />
-
-    <label>Location:</label>
-    <input type="text" name="user[location]" id="location" />
-
-    <label>Tell us aboot yerself:</label>
-    <input type="textarea" name="user[about_me]" id="about_me" />
-
-    <label>Avatar Image:</label>
-    <input type="file" name="user[avatar]" %>
-
-    <input type="submit" value="Go!" />
-  
-  </form>
-  <form class="button_to" method="get" action="/signup"><input type="submit" value="Sign up" /></form>
-</script>
-
-
-<!-- User Profile View Template -->
-
-  <script type="text/template" data-template="user-profile">
-
-      <section class="welcome intro-text pure-u-1">
-        <h1>Welcome, {{name}}!</h1>
-      </section>
-      <section class="pure-g">
-        <nav class="menu-list pure-menu pure-u-1-3">
-          <ul class=" pure-menu-list">
-            <li class="menu-item pure-menu-item"><a class="pure-menu-link">Profile</a></li>
-            <li class="menu-item pure-menu-item"><a class="pure-menu-link">My Closets</a></li>
-            <li class="menu-item pure-menu-item"><a class="pure-menu-link">Browse Clothing</a></li>
-            <li class="menu-item pure-menu-item"><a class="pure-menu-link">Wishlists</a></li>
-            <li class="menu-item pure-menu-item"><a class="pure-menu-link">Favorite Closets</a></li>
-            <li class="menu-item pure-menu-item"><a class="pure-menu-link">Inbawks</a></li>
-          </ul>
-        </nav>
-        <!-- User profile content here -->
-        <div id="user-content" class="user-content pure-u-2-3">
-          <div class="pure-g">
-            <div style="background : url('{{avatar}}') no-repeat center; background-size: cover;" class="profile-image pure-u-1-4"></div>
-            <div class="user-info pure-u-3-4">
-              <h1>Display Name: {{name}}</h1>
-              <h3>Email address: {{email}}</h3>
-            </div>
-          </div>  
-          <div class="pure-g">
-            <div class="pure-u-1">
-              <h3>Location: {{location}}</h3>
-              <h3>About Me:</h3>
-              <p> {{about_me}}</p>
-              <h3>My Closets:</h3>
-              {{#closets}}
-                <a href="#/closets/{{id}}">{{name}}</a>
-              {{/closets}}
-            </div>
-          </div>
-
-        </div>
-      </section>        
-    </script>
-
-
-
- <!-- Links and whatnot -->
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+<!-- Links and whatnot -->
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<%= csrf_meta_tags %>
 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
 <link href='http://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
-<!-- Menu bar -->
-<div class="custom-menu pure-menu pure-menu-horizontal">
-  <a href="#" class="pure-menu-heading pure-menu-link"><i class="fa fa-exchange"></i><span class="menu-logo"> Up For Grabs</span></a>
-  <ul class="menu-right pure-menu-list">
+  <!-- Menu bar -->
+  <div class="custom-menu pure-menu pure-menu-horizontal">
+    <a href="#" class="pure-menu-heading pure-menu-link"><i class="fa fa-exchange"></i><span class="menu-logo"> Up For Grabs</span></a>
+    <ul class="menu-right pure-menu-list">
       <li class="pure-menu-item"><a href="#" class="pure-menu-link">About</a></li>
 
       <% if @current_user %>
 
-        <li class="pure-menu-item"><a href="<%= logout_path %>" class="pure-menu-link">Log Out</a></li>
+      <li class="pure-menu-item"><a href="<%= logout_path %>" class="pure-menu-link">Log Out</a></li>
 
       <% else %>
 
-        <li class="pure-menu-item"><a href="#signup" class="pure-menu-link">Sign up</a></li>
-        <li class="pure-menu-item"><a href="#login" class="pure-menu-link">Log In</a></li>
+      <li class="pure-menu-item"><a href="#signup" class="pure-menu-link">Sign up</a></li>
+      <li class="pure-menu-item"><a href="#login" class="pure-menu-link">Log In</a></li>
       
       <% end %>
 
-  </ul>
-</div>
-
-<!-- Main content here -->
-<div class="pure-g">
-  
-
-  <div id="main-content" class="main-content pure-u-1">
-      
-    <%= yield %>
-
-    <footer class="pure-g">
-      <div class="pure-u-1">
-        <p>Footer footer footer footer footer fooooter</p>
-      </div>
-    </footer>
+    </ul>
   </div>
-</div>
+
+  <!-- Main content here -->
+  <div class="pure-g">
+
+
+    <div id="main-content" class="main-content pure-u-1">
+
+      <%= yield %>
+
+      <footer class="pure-g">
+        <div class="pure-u-1">
+          <p>Footer footer footer footer footer fooooter</p>
+        </div>
+      </footer>
+    </div>
+  </div>
 
 </body>
 </html>

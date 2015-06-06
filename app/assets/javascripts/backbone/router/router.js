@@ -20,7 +20,6 @@ SwapApp.Routers.Router = Backbone.Router.extend({
     if (SwapApp.currentUser.get('id')) {
       $("#main-content").empty();    
       console.log("User " + SwapApp.currentUser.get('name') + " logged in!")
-      // this.guestIndex();
       this.userProfileShow()
     } else {
       $("#main-content").empty();
@@ -39,11 +38,8 @@ SwapApp.Routers.Router = Backbone.Router.extend({
     itemCollection.fetch()
   },
   userProfileShow: function(){
-    // Create user model so's we can render their profile
-    console.log(SwapApp.currentUser)
-    // FIrst render out the paaaage (inst. view)
-    var profileView = new SwapApp.Views.ProfileView({model: SwapApp.currentUser, el: $('#main-content')})
-    // instantiate a view for the user's profile stuff that watches the user model? SwapApp.currentUser is a model. Yeah. Let's do that up there akshually 
+    var menuView = new SwapApp.Views.MenuView({model: SwapApp.currentUser, el: $('#main-content')})
+    var profileView = new SwapApp.Views.ProfileView({model: SwapApp.currentUser, el: $('#user-content')})
   },
   login: function(){
     $("#main-content").empty();
