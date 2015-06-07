@@ -19,7 +19,7 @@ SwapApp.Views.ItemView = Backbone.View.extend({
   editTemplate: $('[data-template="edit-item-card"]').html(),
   render: function(){
     // debugger
-    if (SwapApp.currentUser.get('id') == this.model.attributes.user.id) {
+    if (SwapApp.currentUser.attributes.id && SwapApp.currentUser.get('id') == this.model.attributes.user.id) {
       this.$el.html(Mustache.render(this.template, this.model.attributes))
       this.$el.attr('class','item-card pure-u-1 pure-u-md-1-2 pure-u-lg-1-4')
       return this

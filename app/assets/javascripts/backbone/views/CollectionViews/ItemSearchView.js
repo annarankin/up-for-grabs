@@ -32,7 +32,11 @@ SwapApp.Views.ItemSearchView = Backbone.View.extend({
     filter.color = $('#color').val().toLowerCase()
     filter.size = $('#size').val().toLowerCase()
     filteredData = this.options.baseCollection.filter(function(object) {
-      filtered = object.get('clothing_type').toLowerCase().includes(filter.clothing_type) && object.get('color').toLowerCase().includes(filter.color) && object.get('size').toLowerCase().includes(filter.size)
+      filtered = (
+        object.get('clothing_type').toLowerCase().includes(filter.clothing_type) &&
+        object.get('color').toLowerCase().includes(filter.color) && 
+        object.get('size').toLowerCase().includes(filter.size)
+       )
       return filtered
     })
     this.collection.reset(filteredData)
