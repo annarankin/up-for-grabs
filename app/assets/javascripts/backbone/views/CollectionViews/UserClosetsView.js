@@ -8,7 +8,7 @@ SwapApp.Views.UserClosetsView = Backbone.View.extend({
     this.render()
   },
   events: {
-    'click [data-action="add-closet"]' : 'addCloset'
+    'click [data-action="add-closet"]' : 'newClosetForm'
   },
   template: $('[data-template="user-closets"]').text(),
   render: function(){
@@ -19,5 +19,8 @@ SwapApp.Views.UserClosetsView = Backbone.View.extend({
     var newCloset = new SwapApp.Views.ClosetView({model: model})
     newCloset.render();
     this.$el.append(newCloset.$el)
+  },
+  newClosetForm: function() {
+    console.log('New closet someday mebbe')
   }
 })

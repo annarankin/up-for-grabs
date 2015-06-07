@@ -8,7 +8,8 @@ SwapApp.Views.ProfileView = Backbone.View.extend({
   },
   events: {
     'click [data-action="edit-profile"]': 'editProfile',
-    'click [data-action="save-profile"]': 'saveProfile'
+    'click [data-action="save-profile"]': 'saveProfile',
+    'click [data-action="cancel-profile-edit"]': 'cancelEdit'
   },
   template: $('[data-template="user-profile"]').text(),
   editTemplate: $('[data-template="user-profile-edit"]').text(),
@@ -43,5 +44,9 @@ SwapApp.Views.ProfileView = Backbone.View.extend({
         console.log("AJAX form submission completed.")
       }
     })
+  },
+  cancelEdit: function(event) {
+    event.preventDefault();
+    this.render();
   }
 })

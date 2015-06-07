@@ -67,7 +67,7 @@ module Api
 
     private
     def item_params
-      params.require(:item).permit(:closet_id, :clothing_type, :description, :size, :expiration_date, :photo)
+      params.require(:item).permit(:closet_id, :color, :clothing_type, :description, :size, :expiration_date, :photo)
     end
   end
 end

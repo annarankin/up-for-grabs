@@ -16,7 +16,8 @@ SwapApp.Routers.Router = Backbone.Router.extend({
     'signup' : 'signup',
     'closets' : 'allClosets',
     'user/closets' : 'userClosets',
-    'closets/:id' : 'showCloset'
+    'closets/:id' : 'showCloset',
+    'items' : 'items'
   },
   index: function(){
     //check if user is logged in or nawt,
@@ -75,4 +76,19 @@ SwapApp.Routers.Router = Backbone.Router.extend({
 
     var itemsCView = new SwapApp.Views.ItemCView({collection: itemsCollection, el: $('#user-content') })
   },
+  items: function() {
+    $("#main-content").empty();
+    var menuView = new SwapApp.Views.MenuView({model: SwapApp.currentUser, el: $('#main-content')})
+    // instantiating a collection that'll hold all of our models
+    var itemCollection = new SwapApp.Collections.ItemCollection({url: '/api/items'})
+    // instantiating a collection that will hold our filtered results
+    var filteredCollection = new SwapApp.Collections.ItemCollection({url: '/api/items'})
+    // instantiating a search results view - it listens for "reset" events spit out by filteredCollection, then re-renders itself with the new contents!
+    searchResultsView = new SwapApp.Views.ItemSearchView({collection: filteredCollection, el: $('#user-content'), baseCollection: itemCollection}
+        )
+    //populating search results with ALL THE THINGS
+    itemCollection.fetch().done(function(data) {
+      filteredCollection.reset(data)
+    })
+  }
 })

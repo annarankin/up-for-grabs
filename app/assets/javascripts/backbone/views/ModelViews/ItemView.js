@@ -6,7 +6,7 @@ SwapApp.Views.ItemView = Backbone.View.extend({
     this.listenTo(this.model, 'change', this.render)
   },
   events: {
-    'click .image': 'viewItem',
+    'click [data-action="edit"]': 'editItemView',
     'click .close-modal': 'closeModal',
     'click .delete-item': 'deleteItem',
     'click [data-action="edit-item-save"]' : 'saveEdit'
@@ -14,14 +14,22 @@ SwapApp.Views.ItemView = Backbone.View.extend({
   closeModal: function() {
     $('#editItemModal').remove();
   },
-  template: $('[data-template="item-card"]').html(),
+  template: $('[data-template="user-item-card"]').html(),
+  guestTemplate: $('[data-template="item-card"]').html(),
   editTemplate: $('[data-template="edit-item-card"]').html(),
-  render: function(){  
-    this.$el.html(Mustache.render(this.template, this.model.attributes))
-    this.$el.attr('class','item-card pure-u-1 pure-u-md-1-2 pure-u-lg-1-4')
-    return this
+  render: function(){
+    // debugger
+    if (SwapApp.currentUser.get('id') == this.model.attributes.user.id) {
+      this.$el.html(Mustache.render(this.template, this.model.attributes))
+      this.$el.attr('class','item-card pure-u-1 pure-u-md-1-2 pure-u-lg-1-4')
+      return this
+    } else {
+      this.$el.html(Mustache.render(this.guestTemplate, this.model.attributes))
+      this.$el.attr('class','item-card pure-u-1 pure-u-md-1-2 pure-u-lg-1-4')
+      return this
+    }
   },
-  viewItem: function() {
+  editItemView: function() {
     editItemModal = $('<div>')
     editItemModal.html(Mustache.render(this.editTemplate, this.model.attributes))
     editItemModal.attr('id','editItemModal')

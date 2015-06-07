@@ -10,12 +10,12 @@
 
   <!-- TEMPLATES -->
 
-  <!-- Card Template -->
+  <!-- Generic Card Template -->
   <script type="text/template" data-template="item-card" >
 
     <div class="card">
-    <i class="delete-item fa fa-times-circle"></i>
-      <div class="image" style="background : url('{{photo}}') no-repeat center; background-size: cover;;">
+    <!-- <i class="delete-item fa fa-times-circle"></i> -->
+      <div class="image" style="background : url('{{photo}}') no-repeat center; background-size: cover;">
       </div>
       <div class="info">
         <p><a data-action="view-item">{{description}}</a></p>
@@ -27,6 +27,22 @@
 
   </script>
 
+  <!-- User Card Template -->
+  <script type="text/template" data-template="user-item-card" >
+
+    <div class="card">
+    <i class="delete-item fa fa-times-circle"></i>
+      <div data-action="edit" class="image" style="background : url('{{photo}}') no-repeat center; background-size: cover;">
+      </div>
+      <div class="info">
+        <p><a data-action="view-item">{{description}}</a></p>
+        <p>{{color}} {{clothing_type}}, Size {{size}}</p>
+        <p><i class="fa fa-user"></i> {{user.name}}</p>
+        <p><i class="fa fa-tags"></i> {{#tags}}{{name}} {{/tags}}</p>
+      </div>
+    </div>
+
+  </script>
   <!-- Guest View Page -->
 
   <script type="text-template" data-template="guest-index">
@@ -115,6 +131,7 @@
   <div class="pure-g">
     <div style="background : url('{{avatar}}') no-repeat center; background-size: cover;" class="profile-image pure-u-1-4"></div>
     <div class="user-info pure-u-3-4">
+      <button class="pure-button" data-action="edit-profile">Edit Profile</button>
       <h3>Display Name:<br/> {{name}}</h3>
       <h3>Email address:<br/> {{email}}</h3>
     </div>
@@ -128,7 +145,6 @@
       {{#closets}}
       <a href="#/closets/{{id}}">{{name}}</a>
       {{/closets}}
-      <button data-action="edit-profile">Edit Profile</button>
     </div>
   </div>
 </script>
@@ -163,7 +179,8 @@
       <label for="avatar">Avatar Image:
         <input class="pure-input-1" type="file" name="user[avatar]" id="avatar" %>
       </label>  
-      <input data-action="save-profile" type="submit" value="Save changes">
+      <input class="pure-button pure-button-primary" data-action="save-profile" type="submit" value="Save changes">
+      <input class="pure-button" data-action="cancel-profile-edit" type="submit" value="Cancel">
 
     </div>
   
@@ -175,9 +192,9 @@
 
 <script type="text/template" data-template="user-closets">
   <div class="pure-u-1">
+      <button class="pure-button" data-action="add-closet">Add Closet</button>
       <h3>My Closets:</h3>
       <div class="cards"></div>
-      <button data-action="add-closet">Add Closet</button>
   </div>
 </script>
 
@@ -188,6 +205,22 @@
       <h3>What's in {{name}}'s closet?</h3>
       <div class="cards"></div>
       <button data-action="add-item">Add Item</button>
+  </div>
+</script>
+
+  <!-- Search Items Template -->
+
+<script type="text/template" data-template="search-form">
+  <div class="pure-u-1">
+    <h3>Search Clothing Items</h3>
+    <div id="search-form" class="pure-form pure-form-stacked">
+      <input class="pure-input-1" type="text" id="clothing_type" placeholder="Type of clothing: Shirt, dress, pants..." />
+      <input class="pure-input-1" type="text" id="color" placeholder="Color: red, yellow, blue, etc..." />
+      <input class="pure-input-1" type="text" id="size" placeholder="Size: S, M, L, 12, etc..." />
+    </div>
+    <div id='search-results' class="cards pure-g">
+      Results go heer
+    </div>
   </div>
 </script>
 
