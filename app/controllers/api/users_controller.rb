@@ -30,6 +30,7 @@ module Api
       if current_user 
         user = User.find(@current_user.id)
         user.update(user_params)
+        # NOTE - add logic to render one thing for HTML, one for AJAX - talk to Julie
         render json: user.to_json({
             only: [:email, :name, :location, :about_me, :id],
             include: {
@@ -41,7 +42,7 @@ module Api
             methods: :avatar
           })
       else
-        render plain: "User not found."
+  render plain: "User not found."
       end
     end
 

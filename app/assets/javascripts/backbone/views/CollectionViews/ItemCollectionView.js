@@ -4,6 +4,7 @@ SwapApp.Views.ItemCView = Backbone.View.extend({
   initialize: function(){
     console.log('Item collection view lai le oh')
     this.listenTo(this.collection, 'add', this.addOne)
+    this.collection.fetch();
   },
   addOne: function(model){
     var newItemView = new SwapApp.Views.ItemView({model: model});

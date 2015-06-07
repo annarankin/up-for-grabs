@@ -17,6 +17,7 @@ SwapApp.Views.UserClosetsView = Backbone.View.extend({
   addCloset: function(model) {
     var newCloset = new SwapApp.Views.ClosetView({model: model})
     newCloset.render();
+    debugger
     this.$el.append(newCloset.$el)
   }
 })

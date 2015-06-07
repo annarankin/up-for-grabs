@@ -16,7 +16,7 @@
       <div class="image" style="background : url('{{photo}}') no-repeat center; background-size: cover;;">
       </div>
       <div class="info">
-        <p>{{description}}</p>
+        <p><a data-action="view-item">{{description}}</a></p>
         <p>{{color}} {{clothing_type}}, Size {{size}}</p>
         <p><i class="fa fa-user"></i> {{user.name}}</p>
       </div>
@@ -179,6 +179,7 @@
 
 <script type="text/template" data-template="user-closets">
       <h3>My Closets:</h3>
+      <div class="cards"></div>
       <button data-action="add-closet">Add Closet</button>
 </script>
 

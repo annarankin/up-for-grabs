@@ -34,7 +34,7 @@ SwapApp.Routers.Router = Backbone.Router.extend({
     //Instantiate Guest index page view
     var guestIndexView = new SwapApp.Views.GuestIndex({el: $('#main-content')})
     // Instantiate a collection of all clothing items
-    var itemCollection = new SwapApp.Collections.ItemCollection()
+    var itemCollection = new SwapApp.Collections.ItemCollection({url: '/api/items'})
     // Instantiate a collection view that'll pop em on the DOM
     var itemCView = new SwapApp.Views.ItemCView({collection: itemCollection, el: $('#guest-items-view')})
     // fetch that collection
@@ -64,7 +64,14 @@ SwapApp.Routers.Router = Backbone.Router.extend({
   allClosets: function() {
     console.log('all closets route hit')
   },
-  showCloset: function() {
-    console.log('single closet route hit')
+  showCloset: function(id) {
+    
+    $("#main-content").empty();
+    
+    var menuView = new SwapApp.Views.MenuView({model: SwapApp.currentUser, el: $('#main-content')})
+    
+    var itemsCollection = new SwapApp.Collections.ClosetItems()
+
+    var itemsCView = new SwapApp.Views.ItemCView({collection: itemsCollection, el: $('#user-content') })
   },
 })
