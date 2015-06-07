@@ -19,15 +19,15 @@ SwapApp.Views.ItemView = Backbone.View.extend({
   editTemplate: $('[data-template="edit-item-card"]').html(),
   render: function(){
     debugger
-    // if (SwapApp.currentUser.attributes.id != undefined && SwapApp.currentUser.get('id') == this.model.attributes.user.id) {
+    if (SwapApp.currentUser && SwapApp.currentUser.get('id') == this.model.attributes.user.id) {
       this.$el.html(Mustache.render(this.template, this.model.attributes))
       this.$el.attr('class','item-card pure-u-1 pure-u-md-1-2 pure-u-lg-1-4')
       return this
-    // } else {
-      // this.$el.html(Mustache.render(this.guestTemplate, this.model.attributes))
-      // this.$el.attr('class','item-card pure-u-1 pure-u-md-1-2 pure-u-lg-1-4')
-      // return this
-    // }
+    } else {
+      this.$el.html(Mustache.render(this.guestTemplate, this.model.attributes))
+      this.$el.attr('class','item-card pure-u-1 pure-u-md-1-2 pure-u-lg-1-4')
+      return this
+    }
   },
   editItemView: function() {
     editItemModal = $('<div>')
