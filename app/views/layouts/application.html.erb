@@ -19,6 +19,7 @@
         <p><a data-action="view-item">{{description}}</a></p>
         <p>{{color}} {{clothing_type}}, Size {{size}}</p>
         <p><i class="fa fa-user"></i> {{user.name}}</p>
+        <p><i class="fa fa-tags"></i> {{#tags}}{{name}} {{/tags}}</p>
       </div>
     </div>
 
@@ -178,11 +179,22 @@
   <!-- User Closet List View Template -->
 
 <script type="text/template" data-template="user-closets">
+  <div class="pure-u-1">
       <h3>My Closets:</h3>
       <div class="cards"></div>
       <button data-action="add-closet">Add Closet</button>
+  </div>
 </script>
 
+  <!-- Single Closet Show View Template -->
+
+<script type="text/template" data-template="closet-show">
+  <div class="pure-u-1">
+      <h3>What's in {{name}}'s closet?</h3>
+      <div class="cards"></div>
+      <button data-action="add-item">Add Item</button>
+  </div>
+</script>
 
 <!-- Sidebar Menu Template (includes empty user-content div)  -->
 <script type="text/template" data-template="menu-template">

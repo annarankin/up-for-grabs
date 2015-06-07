@@ -5,16 +5,19 @@ module Api
       if params[:closet_id]
         items = Item.where(closet_id: params[:closet_id])
         render json: items.to_json({
-          include: { user: 
-              { only: [:name, :id] }
-            },
+          include: { 
+            user: 
+              { only: [:name, :id] },
+            tags: {}
+          },
           methods: :photo
           })  
       else
         items = Item.all
         render json: items.to_json({
           include: { user: 
-              { only: [:name, :id] }
+              { only: [:name, :id] },
+            tags: {}
             },
           methods: :photo
           })
@@ -25,7 +28,8 @@ module Api
       item = Item.find(params[:id])
       render json: item.to_json({
         include: { user: 
-            { only: [:name, :id] }
+            { only: [:name, :id] },
+            tags: {}
           },
         methods: :photo
         })

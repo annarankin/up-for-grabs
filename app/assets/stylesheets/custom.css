@@ -52,14 +52,14 @@ body {
 }
 .card {
   background: #ecf0f1;
-  min-height: 300px;
-  margin: 5px;
+  margin: .3em;
+  padding: .1em
 }
 
 .card .image {
-  height: 200px;
+  height: 10em;
   background-size: cover;
-  margin: .5em;
+  margin: .2em;
 }
 .card p {
   margin: .7em;
@@ -102,6 +102,16 @@ footer {
    columns: 2;
   -webkit-columns: 2;
   -moz-columns: 2;
+  }
+  .card .image {
+  height: 20em;
+  background-size: cover;
+  margin: .5em;
+  }
+  .card {
+    background: #ecf0f1;
+    margin: 1em;
+    padding: 1em
   }
 }
 
