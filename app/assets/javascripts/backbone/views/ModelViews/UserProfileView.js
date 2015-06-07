@@ -24,13 +24,35 @@ SwapApp.Views.ProfileView = Backbone.View.extend({
   },
   saveProfile: function(event){
     event.preventDefault();
-    console.log('saved!')
+    // console.log('saved!')
+    var that = this
+    $('#edit-profile-form').ajaxSubmit({
+      // target: '#myResultsDiv'
+      url: '/api/users',
+      type: 'PUT',
+      success: function(data) {
+        console.log("Success!")
+        // console.log(data)
+        that.model.fetch();
+        // debugger
+      },
+      error: function(data) {
+        console.log("ERRORAR!")
+        console.log(data)
+      },
+      complete: function(data) {
+        console.log("Completed:")
+        console.log(data)
+      }
+    })
 
-    var formParams = {}
-    formParams.name = $("#name").val()
-    formParams.email = $("#email").val()
-    formParams.location = $("#location").val()
-    formParams.about_me = $("#about_me").val()
+
+    // var formParams = {}
+    // formParams.name = $("#name").val()
+    // formParams.email = $("#email").val()
+    // formParams.location = $("#location").val()
+    // formParams.about_me = $("#about_me").val()
+    // formParams.avatar = $("#avatar").val()
 
     //Having issues with file uploading...
 
@@ -59,7 +81,7 @@ SwapApp.Views.ProfileView = Backbone.View.extend({
     //     console.log(data)
     //   });
     // }
-    this.model.save(formParams, {wait: true})
+    // this.model.save(formParams, {wait: true})
     
   }
 })

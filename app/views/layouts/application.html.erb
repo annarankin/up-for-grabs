@@ -7,6 +7,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css">
 
+
   <!-- TEMPLATES -->
 
   <!-- Card Template -->
@@ -140,7 +141,7 @@
     </div>
 
     <div class="user-info pure-u-3-4">
-      <form class="pure-form pure-form-stacked" >
+      <form id="edit-profile-form" class="pure-form pure-form-stacked" >
         
         <label for="name">Display Name:
           <input class="pure-input-1" type="text" name="user[name]" id="name" value="{{name}}" />
@@ -158,22 +159,22 @@
         <input class="pure-input-1" type="textarea" name="user[about_me]" id="about_me" value="{{about_me}}" />
       </label>
 
-
+      <label for="avatar">Avatar Image:
+        <input class="pure-input-1" type="file" name="user[avatar]" id="avatar" %>
+      </label>  
+<!-- Moved this here for testing porpoises -->
       <input data-action="save-profile" type="submit" value="Save changes">
 
     </div>
   
   </form>
-  <form class="pure-form" enctype="multipart/form-data" action="/api/users" accept-charset="UTF-8" method="post">
+  <!-- <form class="pure-form" enctype="multipart/form-data" action="/api/users" accept-charset="UTF-8" method="post">
       <input name="utf8" type="hidden" value="&#x2713;" />
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" />
       <input name="_method" type="hidden" value="put">
-      <label for="avatar">Avatar Image:
-        <input class="pure-input-1" type="file" name="user[avatar]" id="avatar" %>
-      </label>  
       <input type="submit">
 
-  </form>
+  </form> -->
 </script>
 
   <!-- User Closet List View Template -->
