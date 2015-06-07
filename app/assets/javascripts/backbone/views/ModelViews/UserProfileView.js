@@ -24,10 +24,9 @@ SwapApp.Views.ProfileView = Backbone.View.extend({
   },
   saveProfile: function(event){
     event.preventDefault();
-    // console.log('saved!')
     var that = this
+// jQuery form plugin method - submits edit profile form ASYNCHRONOUSLY OYESSS
     $('#edit-profile-form').ajaxSubmit({
-      // target: '#myResultsDiv'
       url: '/api/users',
       type: 'PUT',
       success: function(data) {
@@ -41,47 +40,8 @@ SwapApp.Views.ProfileView = Backbone.View.extend({
         console.log(data)
       },
       complete: function(data) {
-        console.log("Completed:")
-        console.log(data)
+        console.log("AJAX form submission completed.")
       }
     })
-
-
-    // var formParams = {}
-    // formParams.name = $("#name").val()
-    // formParams.email = $("#email").val()
-    // formParams.location = $("#location").val()
-    // formParams.about_me = $("#about_me").val()
-    // formParams.avatar = $("#avatar").val()
-
-    //Having issues with file uploading...
-
-    // newAvatar = $("#avatar").prop('files')[0]
-    // if (newAvatar) {
-    //   var formData = new FormData()
-    //   formData.append('user["avatar"]', newAvatar)
-    //   // debugger
-    //   var that = this
-    //   $.ajax({
-    //       url: '/api/users',
-    //       method: 'PUT',
-    //       processData: false,
-    //       contentType: false,
-    //       data: formData,
-    //       error: function (data) {
-    //         console.log('error\'d')
-    //         // debugger
-    //       },
-    //       success: function (data) {
-    //         console.log('success\'d')
-    //         // debugger
-    //       }
-    //   }).done(function(data){
-    //     // debugger
-    //     console.log(data)
-    //   });
-    // }
-    // this.model.save(formParams, {wait: true})
-    
   }
 })

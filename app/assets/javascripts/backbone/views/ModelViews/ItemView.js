@@ -15,5 +15,8 @@ SwapApp.Views.ItemView = Backbone.View.extend({
   },
   viewItem: function() {
     console.log(this.model.attributes)
+    //instantiate and render a new 'ItemEditView'
+    //this should contain the modal and dimmer
+    //
   }
 })

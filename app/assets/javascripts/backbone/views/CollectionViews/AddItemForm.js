@@ -10,12 +10,11 @@ SwapApp.Views.AddItemFormView = Backbone.View.extend({
     'click [data-action="add-item"]': 'newItem',
     'click [data-action="submit-new-item"]': 'submitNewItem'
   },
-    newItem: function() {
-        
-      var addItemModal = $('<div>')
-      addItemModal.html( Mustache.render(this.addNewTemplate, {id: this.collection.models[0].get('closet_id')}) )
-      $('body').append(addItemModal)
-    debugger
+  newItem: function() {
+    var addItemModal = $('<div>')
+    addItemModal.attr('id', 'addItemModal')
+    addItemModal.html( Mustache.render(this.addNewTemplate, {id: this.collection.models[0].get('closet_id')}) )
+    this.$el.prepend(addItemModal)
   },
   render: function() {
     this.$el.append(Mustache.render(this.template, SwapApp.currentUser.attributes))
@@ -23,7 +22,23 @@ SwapApp.Views.AddItemFormView = Backbone.View.extend({
   },
   submitNewItem: function(event) {
     event.preventDefault();
-    console.log('Ahhh')
+    var that = this
+    $('#new-item-form').ajaxSubmit({
+      url: '/api/items',
+      type: 'POST',
+      success: function(data) {
+        console.log("Success!")
+        that.collection.add(data)
+        $('#addItemModal').remove();
+      },
+      error: function(data) {
+        console.log("ERRORAR!")
+        console.log(data)
+      },
+      complete: function(data) {
+        console.log("AJAX form submission completed.")
+      }
+    })
   }
 })
 

@@ -162,19 +162,12 @@
       <label for="avatar">Avatar Image:
         <input class="pure-input-1" type="file" name="user[avatar]" id="avatar" %>
       </label>  
-<!-- Moved this here for testing porpoises -->
       <input data-action="save-profile" type="submit" value="Save changes">
 
     </div>
   
   </form>
-  <!-- <form class="pure-form" enctype="multipart/form-data" action="/api/users" accept-charset="UTF-8" method="post">
-      <input name="utf8" type="hidden" value="&#x2713;" />
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" />
-      <input name="_method" type="hidden" value="put">
-      <input type="submit">
 
-  </form> -->
 </script>
 
   <!-- User Closet List View Template -->
@@ -204,7 +197,7 @@
   </div>
   <div class="modal">
       
-    <form class="pure-form pure-form-stacked" enctype="multipart/form-data" action="/api/items" accept-charset="UTF-8" method="post">
+    <form id="new-item-form" class="pure-form pure-form-stacked">
 
       <input name="utf8" type="hidden" value="&#x2713;" />
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" />
@@ -230,7 +223,7 @@
       <input class="pure-input-1" type="text" name="item[size]" id="size" />
       </label>
 
-      <label for="color">Color:
+      <label for="color">Color:</label>
       <select class="pure-input-1" name="item[color]" id="color">
         <option>Red</option>
         <option>Orange</option>
@@ -245,15 +238,13 @@
         <option>Multi</option>
         <option>Other</option>
       </select>
-      </label>
-
       <label>Expiration:</label>
-      <input type="date" name="item[expiratio n_date]" id="expiration_date" value="<% Date.today.to_s %>" />
+      <input type="date" name="item[expiration_date]" id="expiration_date" value="<% Date.today.to_s %>" />
 
       <label>Photo:</label>
       <input type="file" name="item[photo]" />
 
-      <input type="submit" value="Go!" />
+      <button data-action="submit-new-item">Submeat</button>
 
     </form>
 
