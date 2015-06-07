@@ -8,7 +8,8 @@ SwapApp.Views.AddItemFormView = Backbone.View.extend({
   addNewTemplate: $('[data-template="add-item"]').text(),
   events: {
     'click [data-action="add-item"]': 'newItem',
-    'click [data-action="submit-new-item"]': 'submitNewItem'
+    'click [data-action="submit-new-item"]': 'submitNewItem',
+    'click .close-modal': 'closeModal'
   },
   newItem: function() {
     var addItemModal = $('<div>')
@@ -20,6 +21,9 @@ SwapApp.Views.AddItemFormView = Backbone.View.extend({
     this.$el.append(Mustache.render(this.template, SwapApp.currentUser.attributes))
     console.log('Closetsss view rendering.')
   },
+  closeModal: function() {
+    $('#addItemModal').remove();
+  },
   submitNewItem: function(event) {
     event.preventDefault();
     var that = this
@@ -29,7 +33,7 @@ SwapApp.Views.AddItemFormView = Backbone.View.extend({
       success: function(data) {
         console.log("Success!")
         that.collection.add(data)
-        $('#addItemModal').remove();
+        this.closeModal();
       },
       error: function(data) {
         console.log("ERRORAR!")

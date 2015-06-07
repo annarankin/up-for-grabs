@@ -47,6 +47,12 @@ module Api
         })      
     end
 
+    def destroy
+      item = Item.find(params[:id])
+      item.destroy()
+      render json: item.to_json
+    end
+
     private
     def item_params
       params.require(:item).permit(:closet_id, :clothing_type, :description, :size, :expiration_date, :photo)

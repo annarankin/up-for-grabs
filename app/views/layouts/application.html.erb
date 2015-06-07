@@ -14,6 +14,7 @@
   <script type="text/template" data-template="item-card" >
 
     <div class="card">
+    <i class="delete-item fa fa-times-circle"></i>
       <div class="image" style="background : url('{{photo}}') no-repeat center; background-size: cover;;">
       </div>
       <div class="info">
@@ -190,13 +191,13 @@
   </div>
 </script>
 
-  <!-- Add New Item Form Template -->
+<!-- Add New Item Form Template -->
 
 <script type="text/template" data-template="add-item">
   <div class="dimmer">
   </div>
   <div class="modal">
-      
+    <i class="close-modal fa fa-times-circle"></i>
     <form id="new-item-form" class="pure-form pure-form-stacked">
 
       <input name="utf8" type="hidden" value="&#x2713;" />
@@ -238,7 +239,7 @@
         <option>Multi</option>
         <option>Other</option>
       </select>
-      
+
       <label>Expiration:</label>
       <input type="date" name="item[expiration_date]" id="expiration_date" value="<% Date.today.to_s %>" />
 
@@ -248,8 +249,67 @@
       <button data-action="submit-new-item">Submeat</button>
 
     </form>
+  </div>
+</script>
 
+<!-- Add New Item Form Template -->
 
+<script type="text/template" data-template="edit-item-card">
+  <div class="dimmer">
+  </div>
+  <div class="modal">
+  <i class="close-modal fa fa-times-circle"></i>
+    <form id="new-item-form" class="pure-form pure-form-stacked">
+
+      <input name="utf8" type="hidden" value="&#x2713;" />
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" />
+      
+      <label for="clothing_type">Clothing Type:</label>
+      <select class="pure-input-1" name="item[clothing_type]" id="clothing_type">
+        <option value="">CURRENT: {{clothing_type}}</option>
+        <option>Dress</option>
+        <option>Shirt</option>
+        <option>Pants</option>
+        <option>Skirt</option>
+        <option>Shoes</option>
+        <option>Hat</option>
+        <option>Other</option>
+      </select>
+
+      <label class="pure-input-1" for="description">Description:
+        <input type="text" name="item[description]" id="description" value="{{description}}" />
+      </label>
+
+      <label>Size:
+      <input class="pure-input-1" type="text" name="item[size]" id="size" value="{{size}}" />
+      </label>
+
+      <label for="color">Color:</label>
+      <select class="pure-input-1" name="item[color]" id="color">
+        <option value="">CURRENT: {{color}}</option>
+        <option>Red</option>
+        <option>Orange</option>
+        <option>Yellow</option>
+        <option>Green</option>
+        <option>Blue</option>
+        <option>Purple</option>
+        <option>Black</option>
+        <option>Gray</option>
+        <option>White</option>
+        <option>Brown</option>
+        <option>Multi</option>
+        <option>Other</option>
+      </select>
+
+      <label>Expiration:</label>
+      <input type="date" name="item[expiration_date]" id="expiration_date" value="{{expiration_date}}" />
+
+      <label>Photo:</label>
+      <input type="file" name="item[photo]" />
+
+      <button data-action="submit-new-item">Submeat</button>
+
+    </form>
   </div>
 </script>
 
