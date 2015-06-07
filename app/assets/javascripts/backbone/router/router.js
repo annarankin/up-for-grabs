@@ -69,8 +69,9 @@ SwapApp.Routers.Router = Backbone.Router.extend({
     $("#main-content").empty();
     
     var menuView = new SwapApp.Views.MenuView({model: SwapApp.currentUser, el: $('#main-content')})
-    $('#user-content').html($('[data-template="show-closet"]').text())
+    // $('#user-content').html($('[data-template="show-closet"]').text())
     var itemsCollection = new SwapApp.Collections.ClosetItems()
+    var addItemFormView = new SwapApp.Views.AddItemFormView({collection: itemsCollection, el: $('#user-content')})
 
     var itemsCView = new SwapApp.Views.ItemCView({collection: itemsCollection, el: $('#user-content') })
   },

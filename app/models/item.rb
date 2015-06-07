@@ -7,5 +7,13 @@ class Item < ActiveRecord::Base
 
   has_attached_file :photo,
                   storage: :s3,
-                  s3_credentials: {:bucket => "up-for-grabs", :access_key_id => ENV['S3_KEY'], :secret_access_key => ENV['S3_SECRET']}
+                  s3_credentials: {:bucket => "up-for-grabs", :access_key_id => ENV['S3_KEY'], :secret_access_key => ENV['S3_SECRET']},
+                  :styles => { :medium => "300x300>", :thumb => "100x100>" },
+                  :default_url => "/photos/:style/missing.png",
+                  :url =>":s3_domain_url",
+                  :path => '/:class/:attachment/:id_partition/:style/:filename'
+
+  validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
+
+
 end

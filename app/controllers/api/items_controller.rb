@@ -35,5 +35,21 @@ module Api
         })
     end
 
+    def create 
+      new_item = Item.new(item_params)
+      new_item.save
+      render json: new_item.to_json({
+        include: { user: 
+            { only: [:name, :id] },
+            tags: {}
+          },
+        methods: :photo
+        })      
+    end
+
+    private
+    def item_params
+      params.require(:item).permit(:closet_id, :clothing_type, :description, :size, :expiration_date, :photo)
+    end
   end
 end

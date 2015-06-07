@@ -196,6 +196,70 @@
   </div>
 </script>
 
+  <!-- Add New Item Form Template -->
+
+<script type="text/template" data-template="add-item">
+  <div class="dimmer">
+  </div>
+  <div class="modal">
+      
+    <form class="pure-form pure-form-stacked" enctype="multipart/form-data" action="/api/items" accept-charset="UTF-8" method="post">
+
+      <input name="utf8" type="hidden" value="&#x2713;" />
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" />
+
+      <input name="item[closet_id]" type="hidden" value="{{id}}" />
+      
+      <label for="clothing_type">Clothing Type:</label>
+      <select class="pure-input-1" name="item[clothing_type]" id="clothing_type">
+        <option>Dress</option>
+        <option>Shirt</option>
+        <option>Pants</option>
+        <option>Skirt</option>
+        <option>Shoes</option>
+        <option>Hat</option>
+        <option>Other</option>
+      </select>
+
+      <label class="pure-input-1" for="description">Description:
+        <input type="text" name="item[description]" id="description" />
+      </label>
+
+      <label>Size:
+      <input class="pure-input-1" type="text" name="item[size]" id="size" />
+      </label>
+
+      <label for="color">Color:
+      <select class="pure-input-1" name="item[color]" id="color">
+        <option>Red</option>
+        <option>Orange</option>
+        <option>Yellow</option>
+        <option>Green</option>
+        <option>Blue</option>
+        <option>Purple</option>
+        <option>Black</option>
+        <option>Gray</option>
+        <option>White</option>
+        <option>Brown</option>
+        <option>Multi</option>
+        <option>Other</option>
+      </select>
+      </label>
+
+      <label>Expiration:</label>
+      <input type="date" name="item[expiratio n_date]" id="expiration_date" value="<% Date.today.to_s %>" />
+
+      <label>Photo:</label>
+      <input type="file" name="item[photo]" />
+
+      <input type="submit" value="Go!" />
+
+    </form>
+
+
+  </div>
+</script>
+
 <!-- Sidebar Menu Template (includes empty user-content div)  -->
 <script type="text/template" data-template="menu-template">
 
