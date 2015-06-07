@@ -53,6 +53,18 @@ module Api
       render json: item.to_json
     end
 
+    def update
+      item = Item.find(params[:id])
+      item.update(item_params)
+      render json: item.to_json({
+        include: { user: 
+            { only: [:name, :id] },
+            tags: {}
+          },
+        methods: :photo
+        })
+    end
+
     private
     def item_params
       params.require(:item).permit(:closet_id, :clothing_type, :description, :size, :expiration_date, :photo)

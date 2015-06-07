@@ -197,7 +197,7 @@
   <div class="dimmer">
   </div>
   <div class="modal">
-    <i class="close-modal fa fa-times-circle"></i>
+    <i data-action="close-form-modal" class="close-modal fa fa-times-circle"></i>
     <form id="new-item-form" class="pure-form pure-form-stacked">
 
       <input name="utf8" type="hidden" value="&#x2713;" />
@@ -259,14 +259,14 @@
   </div>
   <div class="modal">
   <i class="close-modal fa fa-times-circle"></i>
-    <form id="new-item-form" class="pure-form pure-form-stacked">
+    <form id="edit-item-form" class="pure-form pure-form-stacked">
 
       <input name="utf8" type="hidden" value="&#x2713;" />
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" />
       
       <label for="clothing_type">Clothing Type:</label>
       <select class="pure-input-1" name="item[clothing_type]" id="clothing_type">
-        <option value="">CURRENT: {{clothing_type}}</option>
+        <option value="{{clothing_type}}">CURRENT: {{clothing_type}}</option>
         <option>Dress</option>
         <option>Shirt</option>
         <option>Pants</option>
@@ -286,7 +286,7 @@
 
       <label for="color">Color:</label>
       <select class="pure-input-1" name="item[color]" id="color">
-        <option value="">CURRENT: {{color}}</option>
+        <option value="{{color}}">CURRENT: {{color}}</option>
         <option>Red</option>
         <option>Orange</option>
         <option>Yellow</option>
@@ -307,7 +307,7 @@
       <label>Photo:</label>
       <input type="file" name="item[photo]" />
 
-      <button data-action="submit-new-item">Submeat</button>
+      <button data-action="edit-item-save">Submeat</button>
 
     </form>
   </div>

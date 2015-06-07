@@ -9,7 +9,7 @@ SwapApp.Views.AddItemFormView = Backbone.View.extend({
   events: {
     'click [data-action="add-item"]': 'newItem',
     'click [data-action="submit-new-item"]': 'submitNewItem',
-    'click .close-modal': 'closeModal'
+    'click [data-action="close-form-modal"]': 'closeModal'
   },
   newItem: function() {
     var addItemModal = $('<div>')
@@ -33,7 +33,7 @@ SwapApp.Views.AddItemFormView = Backbone.View.extend({
       success: function(data) {
         console.log("Success!")
         that.collection.add(data)
-        this.closeModal();
+        that.closeModal();
       },
       error: function(data) {
         console.log("ERRORAR!")
