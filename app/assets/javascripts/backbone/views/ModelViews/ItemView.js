@@ -23,6 +23,7 @@ SwapApp.Views.ItemView = Backbone.View.extend({
   render: function(){
     // debugger
     if (SwapApp.currentUser && SwapApp.currentUser.get('id') == this.model.attributes.user.id) {
+
       this.$el.html(Mustache.render(this.template, this.model.attributes))
       this.$el.attr('class','item-card pure-u-1 pure-u-md-1-2 pure-u-lg-1-4')
       // if is a favorite, toggle class to true, else false
@@ -31,6 +32,7 @@ SwapApp.Views.ItemView = Backbone.View.extend({
       var $modelView = this.$el
       this.$el.html(Mustache.render(this.guestTemplate, this.model.attributes))
       this.$el.attr('class','item-card pure-u-1 pure-u-md-1-2 pure-u-lg-1-4')
+      
       if (_.findWhere(this.model.attributes.wishlists, {user_id: SwapApp.currentUser.get('id')})) {
           $modelView.addClass('favorite')
       }

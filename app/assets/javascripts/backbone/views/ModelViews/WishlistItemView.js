@@ -31,7 +31,7 @@ SwapApp.Views.WishlistItemView = Backbone.View.extend({
       var $modelView = this.$el
       this.$el.html(Mustache.render(this.guestTemplate, this.model.attributes))
       this.$el.attr('class','item-card pure-u-1 pure-u-md-1-2 pure-u-lg-1-4')
-      debugger
+      // debugger
       if (_.findWhere(this.model.attributes.wishlists, {id: this.model.attributes.id, user_id: SwapApp.currentUser.get('id')})) {
           $modelView.addClass('favorite')
       }
@@ -76,7 +76,7 @@ SwapApp.Views.WishlistItemView = Backbone.View.extend({
   toggleFavorite: function(event) {
     var that = this
     var thing = (_.findWhere(this.model.attributes.wishlists, {id: this.model.attributes.id, user_id: SwapApp.currentUser.get('id')}))
-    debugger
+    // debugger
     if (thing) {
       that.$el.removeClass('favorite') 
       $.ajax({

@@ -18,7 +18,8 @@ SwapApp.Routers.Router = Backbone.Router.extend({
     'user/closets' : 'userClosets',
     'closets/:id' : 'showCloset',
     'items' : 'items',
-    'wishlist' : 'wishlist'
+    'wishlist' : 'wishlist',
+    'inbox': 'inbox'
   },
   index: function(){
     //check if user is logged in or nawt,
@@ -91,7 +92,7 @@ SwapApp.Routers.Router = Backbone.Router.extend({
     // instantiating a collection that will hold our filtered results
     var filteredCollection = new SwapApp.Collections.ItemCollection({url: '/api/users/wishlists'})
     // instantiating a search results view - it listens for "reset" events spit out by filteredCollection, then re-renders itself with the new contents!
-    searchResultsView = new SwapApp.Views.ItemSearchView({collection: filteredCollection, el: $('#user-content'), baseCollection: itemCollection}
+    var searchResultsView = new SwapApp.Views.ItemSearchView({collection: filteredCollection, el: $('#user-content'), baseCollection: itemCollection}
         )
     //populating search results with ALL THE THINGS
     itemCollection.fetch().done(function(data) {
@@ -105,5 +106,38 @@ SwapApp.Routers.Router = Backbone.Router.extend({
 
     var wishlistItemsCollection = new SwapApp.Collections.WishlistItems()
     var wishlistItemsView = new SwapApp.Views.WishlistItemsView({ collection: wishlistItemsCollection, el: $('#user-content')})
+  },
+  inbox: function() {
+    $("#main-content").empty();
+    // var menuView = new SwapApp.Views.MenuView({model: SwapApp.currentUser, el: $('#main-content')})
+
+    // // get all messages
+    // var messagesCollection = new SwapApp.Collections.MessagesCollection()
+    // var inboxView = new SwapApp.Views.InboxView({collection: messagesCollection, el: $('#user-content')})
+    // // pluck out the names
+
+
+    $("#main-content").empty();
+    var menuView = new SwapApp.Views.MenuView({model: SwapApp.currentUser, el: $('#main-content')})
+   
+    // instantiating a collection that'll hold all of our models
+    var messageCollection = new SwapApp.Collections.MessagesCollection()
+    // instantiating a collection that will hold our filtered results
+    var filteredMessageCollection = new SwapApp.Collections.MessagesCollection()
+    var inboxView = new SwapApp.Views.InboxView({collection: filteredMessageCollection, el: $('#user-content'), baseCollection: messageCollection}
+        )
+
+
+
+
   }
 })
+
+
+
+
+
+
+
+
+

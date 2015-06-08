@@ -29,8 +29,9 @@ module Api
     def show
       if current_user
         user_id = @current_user.id
-        wishlisted_item = Item.joins(:wishlists).where(wishlists: {id: params[:id]})
-        wishlisted_item.current_user = user_id
+        wishlisted_item = Item.joins(:wishlists).find_by(wishlists: {id: params[:id]})
+        # wishlisted_item.current_user = user_id
+        byebug
         render json: wishlisted_item.to_json(
           include: {
             user:{
@@ -39,8 +40,8 @@ module Api
                 },
             current_user: {methods: :is_wishlisted_by_user?},
             wishlists: {
-              only: [:id, :user_id],
-              methods: :is_wishlisted_by_user?
+              only: [:id, :user_id]
+              # methods: :is_wishlisted_by_user?
               }
             },
           methods: [:photo])
