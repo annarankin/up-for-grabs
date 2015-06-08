@@ -12,7 +12,7 @@ SwapApp.Views.InboxView = Backbone.View.extend({
     setInterval(function() {
       console.log('fetching from soiver')
       that.options.baseCollection.fetch();
-    }, 3000)
+    }, 7000)
 
   },
   events: {
