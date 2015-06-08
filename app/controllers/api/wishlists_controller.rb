@@ -13,11 +13,34 @@ module Api
           include: {
             user:{
               only: [:id, :name],
-              methods: :is_wishlisted_by_user?
+              # methods: :is_wishlisted_by_user?
                 },
             wishlists: {
-              only: [:user_id]
-              # methods: [:is_wishlisted_by_user?]
+              only: [:id, :user_id],
+              methods: :is_wishlisted_by_user?
+              }
+            },
+          methods: [:photo])
+      else
+        render plain: "Not logged in broski"  
+      end
+    end
+
+    def show
+      if current_user
+        user_id = @current_user.id
+        wishlisted_item = Item.joins(:wishlists).where(wishlists: {id: params[:id]})
+        wishlisted_item.current_user = user_id
+        render json: wishlisted_item.to_json(
+          include: {
+            user:{
+              only: [:id, :name],
+              # methods: :is_wishlisted_by_user?
+                },
+            current_user: {methods: :is_wishlisted_by_user?},
+            wishlists: {
+              only: [:id, :user_id],
+              methods: :is_wishlisted_by_user?
               }
             },
           methods: [:photo])
