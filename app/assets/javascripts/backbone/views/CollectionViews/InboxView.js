@@ -3,10 +3,17 @@ var SwapApp = SwapApp || { Models: {}, Collections: {}, Views: {}, Routers: {} }
 SwapApp.Views.InboxView = Backbone.View.extend({
   initialize: function(options){
     this.options = options
-    console.log('Search view initialized')
+    this.options.filter = {}
+    // console.log('Search view initialized')
     this.renderForm();
     this.listenTo(this.collection, 'reset', this.render)
-    this.listenTo(this.options.baseCollection, 'add', this.addMessage)
+    this.listenTo(this.options.baseCollection, 'add', this.filterMessages)
+    var that = this
+    setInterval(function() {
+      console.log('fetching from soiver')
+      that.options.baseCollection.fetch();
+    }, 3000)
+
   },
   events: {
     'click [data-action="view-message"]' : 'filterMessages',
@@ -50,13 +57,11 @@ SwapApp.Views.InboxView = Backbone.View.extend({
     })
   },
   filterMessages: function(event) {
-    console.log(event)
-    
-    var filter = {}
-    filter.id = $(event.target).data('id')
-
+    // console.log(event)
+    this.options.filter.id = $(event.target).data('id') || this.options.filter.id
+    var that = this
     filteredData = this.options.baseCollection.filter(function(object) {
-      return object.attributes.sender.id == filter.id || (object.attributes.user_id == filter.id && object.attributes.sender_id == SwapApp.currentUser.get('id'))
+      return object.attributes.sender.id == that.options.filter.id || (object.attributes.user_id == that.options.filter.id && object.attributes.sender_id == SwapApp.currentUser.get('id'))
     })
     this.collection.reset(filteredData)
   },
@@ -69,7 +74,7 @@ SwapApp.Views.InboxView = Backbone.View.extend({
     this.options.baseCollection.create(newMessage, {wait: true})
   },
   addMessage: function(model) {
-    console.log('Message addeddddd')
+    // console.log('Message addeddddd')
     this.collection.add(model)
     var newMessageView = new SwapApp.Views.MessageView({model: model});
     newMessageView.render();
