@@ -23,6 +23,7 @@ SwapApp.Views.WishlistItemView = Backbone.View.extend({
   render: function(){
     // debugger
     if (SwapApp.currentUser && SwapApp.currentUser.get('id') == this.model.attributes.user.id) {
+
       this.$el.html(Mustache.render(this.template, this.model.attributes))
       this.$el.attr('class','item-card pure-u-1 pure-u-md-1-2 pure-u-lg-1-4')
       // if is a favorite, toggle class to true, else false
@@ -32,7 +33,7 @@ SwapApp.Views.WishlistItemView = Backbone.View.extend({
       this.$el.html(Mustache.render(this.guestTemplate, this.model.attributes))
       this.$el.attr('class','item-card pure-u-1 pure-u-md-1-2 pure-u-lg-1-4')
       // debugger
-      if (_.findWhere(this.model.attributes.wishlists, {id: this.model.attributes.id, user_id: SwapApp.currentUser.get('id')})) {
+      if (_.findWhere(this.model.attributes.favorite_users, {id: SwapApp.currentUser.get('id')})) {
           $modelView.addClass('favorite')
       }
       return this
@@ -75,15 +76,20 @@ SwapApp.Views.WishlistItemView = Backbone.View.extend({
   },
   toggleFavorite: function(event) {
     var that = this
-    var thing = (_.findWhere(this.model.attributes.wishlists, {id: this.model.attributes.id, user_id: SwapApp.currentUser.get('id')}))
-    // debugger
-    if (thing) {
+    debugger
+    var userWishlist = (_.findWhere(
+      this.model.attributes.wishlists, {
+        item_id: this.model.attributes.id,
+        user_id: SwapApp.currentUser.get('id')
+      })
+    )
+    if (userWishlist) {
       that.$el.removeClass('favorite') 
       $.ajax({
-        url: '/api/users/wishlists/'+ thing.id,  
+        url: '/api/users/wishlists/'+ userWishlist.id,  
         type: "DELETE",
         success: function(data) {
-          that.model.fetch()
+          that.$el.remove()
         },
         error: function(data) {
           debugger
@@ -103,7 +109,7 @@ SwapApp.Views.WishlistItemView = Backbone.View.extend({
         },
         error: function(data) {
           console.log('Post failed. Model not updooted.')
-          debugger
+          // debugger
         }
 
       })

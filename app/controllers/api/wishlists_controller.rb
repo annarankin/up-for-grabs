@@ -5,20 +5,16 @@ module Api
       if current_user
         user_id = @current_user.id
         wishlisted_items = Item.joins(:wishlists).where(wishlists: {user_id: user_id})
-        # The SQL I want: 
-         # SELECT * FROM items LEFT JOIN wishlists ON items.id = wishlists.item_id LEFT JOIN users ON users.id = wishlists.user_id WHERE wishlists.user_id = 1;
-
-        # wishlists = Wishlist.where({user_id: current_user.id})
         render json: wishlisted_items.to_json(
           include: {
             user:{
               only: [:id, :name],
-              # methods: :is_wishlisted_by_user?
                 },
             wishlists: {
-              only: [:id, :user_id],
-              methods: :is_wishlisted_by_user?
-              }
+              except: [:created_at, :updated_at]
+              },
+            favorite_users: {only: [:id, :name]}
+
             },
           methods: [:photo])
       else
@@ -31,18 +27,17 @@ module Api
         user_id = @current_user.id
         wishlisted_item = Item.joins(:wishlists).find_by(wishlists: {id: params[:id]})
         # wishlisted_item.current_user = user_id
-        byebug
+        # binding.pry
         render json: wishlisted_item.to_json(
           include: {
             user:{
               only: [:id, :name],
-              # methods: :is_wishlisted_by_user?
                 },
-            current_user: {methods: :is_wishlisted_by_user?},
             wishlists: {
-              only: [:id, :user_id]
-              # methods: :is_wishlisted_by_user?
-              }
+              except: [:created_at, :updated_at]
+              },
+            favorite_users: {only: [:id, :name]}
+
             },
           methods: [:photo])
       else
@@ -59,10 +54,16 @@ module Api
         wishlisted_item = Item.joins(:wishlists).find_by(wishlists: {id: new_wishlist.id, user_id:user_id})
         render json: wishlisted_item.to_json(
           include: {
-            user:{only: [:id, :name]},
-            wishlists: {only: [:user_id]}
+            user:{
+              only: [:id, :name],
+                },
+            wishlists: {
+              except: [:created_at, :updated_at]
+              },
+            favorite_users: {only: [:id, :name]}
+
             },
-          methods: :photo )
+          methods: [:photo])
       else
         render plain: "Wtf are you trying to do??"  
       end
@@ -74,10 +75,16 @@ module Api
       un_wishlisted_item = Item.joins(:wishlists).find_by(wishlists: {id: wishlist.id})
       render json: un_wishlisted_item.to_json(
           include: {
-            user:{only: [:id, :name]},
-            wishlists: {only: [:user_id]}
+            user:{
+              only: [:id, :name],
+                },
+            wishlists: {
+              only: [:id, :user_id]
+              },
+            favorite_users: {only: [:id, :name]}
+
             },
-          methods: :photo )
+          methods: [:photo])
     end
     
     private

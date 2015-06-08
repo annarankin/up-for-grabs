@@ -23,16 +23,20 @@ SwapApp.Views.InboxView = Backbone.View.extend({
     $("[id='message-thread-display']").append(html)
   },
   renderForm: function() {
-    // this.$el.html(this.template)
     var that = this
     this.options.baseCollection.fetch().done(function(data) {
+     
       var allUsernames = _.pluck(data, 'sender')
         
       var uniqueUsernames = _.uniq(allUsernames, false, function(el){
          return el.name
       })
 
-      that.$el.html(Mustache.render(that.template, {names: uniqueUsernames}))
+      var removedUser = _.reject(uniqueUsernames,function(el) {
+        return el.name == SwapApp.currentUser.get('name')
+      })
+
+      that.$el.html(Mustache.render(that.template, {names: removedUser}))
       
     })
   },
@@ -40,60 +44,19 @@ SwapApp.Views.InboxView = Backbone.View.extend({
     console.log(event)
     
     var filter = {}
-    filter.
+    filter.id = $(event.target).data('id')
 
     filteredData = this.options.baseCollection.filter(function(object) {
-      filtered = //(conditionsss)
-      return filtered
+      return object.attributes.sender.id == filter.id || (object.attributes.user_id == filter.id && object.attributes.sender_id == SwapApp.currentUser.get('id'))
     })
     this.collection.reset(filteredData)
   },
 })
 
 
+// add a 'read' boolean column to all messages, default to false
+// if any messages have 'read' set to false, alert user somehow
+// if user visits inbox page, the user whose messages are unread's row has icon
+// if user clicks on message thread w/unread messages, every message's 'read' boolean is set to true
+// app queries server every 10 seconds in bg to check for new messages
 
-
-
-
-
-
-
-
-
-// var SwapApp = SwapApp || { Models: {}, Collections: {}, Views: {}, Routers: {} };
-
-// SwapApp.Views.InboxView = Backbone.View.extend({
-//   // This view will display each individual a user has corresponded with.
-//   // User can click on username to display all messages exchanged with that user, listed by date.
-//   // This may require a new collection?
-
-//   initialize: function(options) {
-//     var that = this
-//     this.options = {}
-    
-    
-//     this.collection.fetch().done(function(data) {
-      
-//       var allUsernames = _.pluck(data, 'sender')
-      
-//       var uniqueUsernames = _.uniq(allUsernames, false, function(el){
-//        return el.name
-//       })
-//       this.options.filteredMessages = new SwapApp.Collections.MessagesCollection()
-//       that.options.filteredMessages.reset(uniqueUsernames)
-    
-//     })
-//     this.listenTo(this.options.filteredMessages, 'reset', this.render)
-
-//   },
-//   render: function() {
-//     var html = []
-//     this.options.filteredMessages.each(function(model){
-//       var newMessageView = new SwapApp.Views.MessageTitleView({model: model});
-//       newMessageView.render();
-//       html.push(newMessageView.$el)
-//     })
-//     $("[id='message-titles']").empty()
-//     $("[id='message-titles']").append(html)
-//   }
-// })
