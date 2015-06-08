@@ -386,12 +386,10 @@
 <!-- Message Reply form view -->
 
 <script type="text/template" data-template="message-reply-form">
-    <td>
-      <button data-id="{{id}}" data-action="message-reply-submit" class="pure-button pure-button-primary">Reply</button>
-    </td>
-    <td>
+    <form class="pure-form">
       <textarea id="message-reply" class="pure-input-1 message-reply"></textarea>
-    </td>
+      <button data-id="{{id}}" data-action="message-reply-submit" class="pure-button pure-button-primary">Reply</button>
+    </form>
 </script>
 
 <!-- Sidebar Menu Template (includes empty user-content div)  -->

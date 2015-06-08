@@ -6,7 +6,7 @@ SwapApp.Views.InboxView = Backbone.View.extend({
     console.log('Search view initialized')
     this.renderForm();
     this.listenTo(this.collection, 'reset', this.render)
-    this.listenTo(this.baseCollection, 'add', this.render)
+    this.listenTo(this.options.baseCollection, 'add', this.addMessage)
   },
   events: {
     'click [data-action="view-message"]' : 'filterMessages',
@@ -15,8 +15,9 @@ SwapApp.Views.InboxView = Backbone.View.extend({
   template: $('[data-template="message-title-container"]').text(),
   replyTemplate: $('[data-template="message-reply-form"]').text(),
   render: function() {
-    debugger
-    otherUserId = $(event.target).data('id')
+    otherUserId = $(event.target).data('id') || $('[data-action="message-reply-submit"]').data('id')
+
+    $('#reply-form').remove()
     var html = []
     this.collection.each(function(model){
       var newMessageView = new SwapApp.Views.MessageView({model: model});
@@ -25,7 +26,10 @@ SwapApp.Views.InboxView = Backbone.View.extend({
     })
     $("[id='message-thread-display']").empty()
     $("[id='message-thread-display']").append(html)
-    $("[id='message-thread-display']").append(Mustache.render(this.replyTemplate, {id: otherUserId}))
+    var newDiv = $('<div>')
+    newDiv.attr('id', 'reply-form')
+    newDiv.html(Mustache.render(this.replyTemplate, {id: otherUserId}))
+    this.$el.append(newDiv)
   },
   renderForm: function() {
     var that = this
@@ -57,11 +61,20 @@ SwapApp.Views.InboxView = Backbone.View.extend({
     this.collection.reset(filteredData)
   },
   submitReply: function(event) {
+    event.preventDefault();
     newMessage = {}
     newMessage.message = $('#message-reply').val()
     newMessage.user_id = $(event.target).data('id')
     newMessage.sender_id = SwapApp.currentUser.get('id')
     this.options.baseCollection.create(newMessage, {wait: true})
+  },
+  addMessage: function(model) {
+    console.log('Message addeddddd')
+    this.collection.add(model)
+    var newMessageView = new SwapApp.Views.MessageView({model: model});
+    newMessageView.render();
+    $("[id='message-thread-display']").append(newMessageView.$el)
+    $('#message-reply').val("")
   }
 })
 
