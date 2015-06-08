@@ -1,2 +1,18 @@
+  <!-- Generic Card Template -->
+  <script type="text/template" data-template="item-card" >
+
+    <div class="card">
+    <!-- <i  data-action="favorite-item" class="favorite-item fa fa-star"></i> -->
+      <div class="image" style="background : url('{{photo}}') no-repeat center; background-size: cover;">
+      </div>
+      <div class="info">
+        <p><a data-action="view-item">{{description}}</a></p>
+        <p>{{color}} {{clothing_type}}, Size {{size}}</p>
+        <p><i class="fa fa-user"></i> {{user.name}}</p>
+        <p><i class="fa fa-tags"></i> {{#tags}}{{name}} {{/tags}}</p>
+      </div>
+    </div>
+
+  </script>
   <%= javascript_include_tag 'guest_application' %>
 <!-- test -->

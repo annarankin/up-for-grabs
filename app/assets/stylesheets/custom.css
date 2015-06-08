@@ -136,3 +136,6 @@ footer {
   float: right;
   color: #d35400;
 }
+.favorite .favorite-item {
+  color: gold;
+}

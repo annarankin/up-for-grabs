@@ -10,23 +10,6 @@
 
   <!-- TEMPLATES -->
 
-  <!-- Generic Card Template -->
-  <script type="text/template" data-template="item-card" >
-
-    <div class="card">
-    <!-- <i class="delete-item fa fa-times-circle"></i> -->
-      <div class="image" style="background : url('{{photo}}') no-repeat center; background-size: cover;">
-      </div>
-      <div class="info">
-        <p><a data-action="view-item">{{description}}</a></p>
-        <p>{{color}} {{clothing_type}}, Size {{size}}</p>
-        <p><i class="fa fa-user"></i> {{user.name}}</p>
-        <p><i class="fa fa-tags"></i> {{#tags}}{{name}} {{/tags}}</p>
-      </div>
-    </div>
-
-  </script>
-
   <!-- User Card Template -->
   <script type="text/template" data-template="user-item-card" >
 
@@ -65,7 +48,7 @@
       <section class="item-header pure-u-1">
         <h1>Recently Added Items</h1>
       </section>
-      <section id="guest-items-view" class="items pure-g">
+      <section id="guest-items-view" class="guest-items pure-g">
       </section>
     </div>
 
@@ -141,7 +124,7 @@
       <h3>Location: {{location}}</h3>
       <h3>About Me:</h3>
       <p> {{about_me}}</p>
-      <h3>My Closets:</h3>
+      <h3>My Closet:</h3>
       {{#closets}}
       <a href="#/closets/{{id}}">{{name}}</a>
       {{/closets}}
@@ -192,8 +175,8 @@
 
 <script type="text/template" data-template="user-closets">
   <div class="pure-u-1">
-      <button class="pure-button" data-action="add-closet">Add Closet</button>
-      <h3>My Closets:</h3>
+      <!-- <button class="pure-button" data-action="add-closet">Add Closet</button> -->
+      <h3>My Closet:</h3>
       <div class="cards"></div>
   </div>
 </script>
@@ -204,9 +187,20 @@
   <div class="pure-u-1">
       <h3>What's in {{name}}'s closet?</h3>
       <div class="cards"></div>
-      <button data-action="add-item">Add Item</button>
+      <button class="pure-button" data-action="add-item">Add Item</button>
   </div>
 </script>
+
+
+  <!-- Wishlist View Template -->
+
+<script type="text/template" data-template="wishlist-show">
+  <div class="pure-u-1">
+      <h3>Your wishlist items:</h3>
+      <div class="wishlist cards pure-g"></div>
+  </div>
+</script>
+
 
   <!-- Search Items Template -->
 
@@ -356,10 +350,10 @@
     <nav class="menu-list pure-menu pure-u-1 pure-u-md-1-4 ">
       <ul class="menu-ul pure-menu-list">
         <li class="menu-item pure-menu-item"><a class="pure-menu-link" href="/#">Profile</a></li>
-        <li class="menu-item pure-menu-item"><a class="pure-menu-link" href="/#user/closets">My Closets</a></li>
+        <li class="menu-item pure-menu-item"><a class="pure-menu-link" href="/#user/closets">My Closet</a></li>
         <li class="menu-item pure-menu-item"><a class="pure-menu-link" href="/#items">Browse Clothing</a></li>
-        <li class="menu-item pure-menu-item"><a class="pure-menu-link">Wishlists</a></li>
-        <li class="menu-item pure-menu-item"><a class="pure-menu-link">Favorite Closets</a></li>
+        <li class="menu-item pure-menu-item"><a class="pure-menu-link" href="/#wishlist">Wishlist</a></li>
+        <!-- <li class="menu-item pure-menu-item"><a class="pure-menu-link">Favorite Closets</a></li> -->
         <li class="menu-item pure-menu-item"><a class="pure-menu-link">Inbawks</a></li>
       </ul>
     </nav>

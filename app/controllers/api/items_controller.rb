@@ -8,7 +8,8 @@ module Api
           include: { 
             user: 
               { only: [:name, :id] },
-            tags: {}
+            tags: {},
+            favorite_users: { only: [:name, :id] }
           },
           methods: :photo
           })  
@@ -17,7 +18,8 @@ module Api
         render json: items.to_json({
           include: { user: 
               { only: [:name, :id] },
-            tags: {}
+            tags: {},
+            favorite_users: { only: [:name, :id] }
             },
           methods: :photo
           })
@@ -29,7 +31,8 @@ module Api
       render json: item.to_json({
         include: { user: 
             { only: [:name, :id] },
-            tags: {}
+            tags: {},
+            favorite_users: { only: [:name, :id] }
           },
         methods: :photo
         })
@@ -41,7 +44,8 @@ module Api
       render json: new_item.to_json({
         include: { user: 
             { only: [:name, :id] },
-            tags: {}
+            tags: {},
+            favorite_users: { only: [:name, :id] }
           },
         methods: :photo
         })      
@@ -59,7 +63,8 @@ module Api
       render json: item.to_json({
         include: { user: 
             { only: [:name, :id] },
-            tags: {}
+            tags: {},
+            favorite_users: { only: [:name, :id] }
           },
         methods: :photo
         })

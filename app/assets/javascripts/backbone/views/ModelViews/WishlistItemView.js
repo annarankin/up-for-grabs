@@ -2,7 +2,7 @@ var SwapApp = SwapApp || { Models: {}, Collections: {}, Views: {}, Routers: {} }
 
 // Way too much going on in this view, should break it up later
 
-SwapApp.Views.ItemView = Backbone.View.extend({
+SwapApp.Views.WishlistItemView = Backbone.View.extend({
   initialize: function(){
     console.log('New ItemView is here!')
     this.listenTo(this.model, 'change', this.render)
@@ -31,7 +31,8 @@ SwapApp.Views.ItemView = Backbone.View.extend({
       var $modelView = this.$el
       this.$el.html(Mustache.render(this.guestTemplate, this.model.attributes))
       this.$el.attr('class','item-card pure-u-1 pure-u-md-1-2 pure-u-lg-1-4')
-      if (_.findWhere(this.model.attributes.wishlists, {user_id: SwapApp.currentUser.get('id')})) {
+      debugger
+      if (_.findWhere(this.model.attributes.wishlists, {id: this.model.attributes.id, user_id: SwapApp.currentUser.get('id')})) {
           $modelView.addClass('favorite')
       }
       return this

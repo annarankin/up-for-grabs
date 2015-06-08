@@ -17,7 +17,8 @@ SwapApp.Routers.Router = Backbone.Router.extend({
     'closets' : 'allClosets',
     'user/closets' : 'userClosets',
     'closets/:id' : 'showCloset',
-    'items' : 'items'
+    'items' : 'items',
+    'wishlist' : 'wishlist'
   },
   index: function(){
     //check if user is logged in or nawt,
@@ -86,9 +87,9 @@ SwapApp.Routers.Router = Backbone.Router.extend({
     $("#main-content").empty();
     var menuView = new SwapApp.Views.MenuView({model: SwapApp.currentUser, el: $('#main-content')})
     // instantiating a collection that'll hold all of our models
-    var itemCollection = new SwapApp.Collections.ItemCollection({url: '/api/items'})
+    var itemCollection = new SwapApp.Collections.ItemCollection({url: '/api/users/wishlists'})
     // instantiating a collection that will hold our filtered results
-    var filteredCollection = new SwapApp.Collections.ItemCollection({url: '/api/items'})
+    var filteredCollection = new SwapApp.Collections.ItemCollection({url: '/api/users/wishlists'})
     // instantiating a search results view - it listens for "reset" events spit out by filteredCollection, then re-renders itself with the new contents!
     searchResultsView = new SwapApp.Views.ItemSearchView({collection: filteredCollection, el: $('#user-content'), baseCollection: itemCollection}
         )
@@ -96,5 +97,13 @@ SwapApp.Routers.Router = Backbone.Router.extend({
     itemCollection.fetch().done(function(data) {
       filteredCollection.reset(data)
     })
+  },
+  wishlist: function() {
+    // Consider bundling the empty/menu render functions
+    $("#main-content").empty();
+    var menuView = new SwapApp.Views.MenuView({model: SwapApp.currentUser, el: $('#main-content')})
+
+    var wishlistItemsCollection = new SwapApp.Collections.WishlistItems()
+    var wishlistItemsView = new SwapApp.Views.WishlistItemsView({ collection: wishlistItemsCollection, el: $('#user-content')})
   }
 })
