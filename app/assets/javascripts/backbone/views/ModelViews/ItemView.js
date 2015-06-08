@@ -12,7 +12,8 @@ SwapApp.Views.ItemView = Backbone.View.extend({
     'click .close-modal': 'closeModal',
     'click .delete-item': 'deleteItem',
     'click [data-action="edit-item-save"]' : 'saveEdit',
-    'click [data-action="favorite-item"]' : 'toggleFavorite'
+    'click [data-action="favorite-item"]' : 'toggleFavorite',
+    'click [data-action="user-popup"]' : 'userPopup'
   },
   closeModal: function() {
     $('#editItemModal').remove();
@@ -110,5 +111,8 @@ SwapApp.Views.ItemView = Backbone.View.extend({
         }
       })
     }
+  },
+  userPopup: function() {
+    console.log('display user modal yeah')
   }
 })

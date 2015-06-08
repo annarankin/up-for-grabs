@@ -12,12 +12,22 @@ module Api
     end
 
     def create
-
+      new_message = Message.new(jam)
+      new_message.save
+      render json: new_message.to_json(include: {sender: {only: [:name, :id]}})
     end
 
     def show
 
     end
+
+    private
+    def jam
+
+      params.permit(:user_id,:sender_id, :message, :read)
+
+    end
+
 
   end
 end
