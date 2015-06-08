@@ -8,12 +8,6 @@ SwapApp.Views.InboxView = Backbone.View.extend({
     this.renderForm();
     this.listenTo(this.collection, 'reset', this.render)
     this.listenTo(this.options.baseCollection, 'add', this.filterMessages)
-    var that = this
-    setInterval(function() {
-      console.log('fetching from soiver')
-      that.options.baseCollection.fetch();
-    }, 7000)
-
   },
   events: {
     'click [data-action="view-message"]' : 'filterMessages',
@@ -87,6 +81,6 @@ SwapApp.Views.InboxView = Backbone.View.extend({
 // add a 'read' boolean column to all messages, default to false
 // if any messages have 'read' set to false, alert user somehow
 // if user visits inbox page, the user whose messages are unread's row has icon
-// if user clicks on message thread w/unread messages, every message's 'read' boolean is set to true
+// if user clicks on message thread w/unread messages, every message's 'read' boolean is set to true - ajax call
 // app queries server every 10 seconds in bg to check for new messages
 
