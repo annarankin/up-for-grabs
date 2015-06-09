@@ -6,7 +6,8 @@ SwapApp.Views.InboxView = Backbone.View.extend({
     this.options.filter = {}
     this.renderForm();
     this.listenTo(this.collection, 'reset', this.render)
-    this.listenTo(this.options.baseCollection, 'add', this.filterMessages)
+    // this.listenTo(SwapApp.event_bus, 'newMessage', this.changeInboxNew)
+    // this.listenTo(SwapApp.event_bus, 'newMessage', this.filterMessages)
     this.listenTo(this.options.baseCollection, 'change', this.announce)
   },
   events: {
@@ -16,16 +17,7 @@ SwapApp.Views.InboxView = Backbone.View.extend({
   template: $('[data-template="message-title-container"]').text(),
   replyTemplate: $('[data-template="message-reply-form"]').text(),
   render: function() {
-    var that = this
-
-    //setting read status of all messages in this collection to 'read'
-    this.collection.each(function(el) {
-      if (el.attributes.read_status === false) {
-        el.save({read_status: true},{merge: true, wait: true})
-        // that.options.baseCollection.add(el,{merge: true, wait: true})
-      }
-    });
-
+    SwapApp.event_bus.trigger('doneFiltering')
 
     otherUserId = $(event.target).data('id') || $('[data-action="message-reply-submit"]').data('id')
 
@@ -89,7 +81,7 @@ SwapApp.Views.InboxView = Backbone.View.extend({
     $('#message-reply').val("")
   },
   announce: function(data) {
-    console.log('change!!!')
+    console.log(data.get('read_status'))
   }
 })
 

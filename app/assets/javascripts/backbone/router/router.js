@@ -12,6 +12,10 @@ SwapApp.Routers.Router = Backbone.Router.extend({
     SwapApp.event_bus = _({}).extend(Backbone.Events);
     // Setting up a globalish collection of all user messages and a view to keep on checking if there are new ones.
     SwapApp.userMessageCollection = new SwapApp.Collections.MessagesCollection()
+
+    // instantiating a globalish collection that will hold our filtered messages
+    SwapApp.filteredMessageCollection = new SwapApp.Collections.MessagesCollection()
+
     SwapApp.readStatusView = new SwapApp.Views.ReadStatusView({collection: SwapApp.userMessageCollection})    
   },
   routes: {
@@ -124,9 +128,7 @@ SwapApp.Routers.Router = Backbone.Router.extend({
     $("#main-content").empty();
     var menuView = new SwapApp.Views.MenuView({model: SwapApp.currentUser, el: $('#main-content')})
    
-    // instantiating a collection that will hold our filtered results
-    var filteredMessageCollection = new SwapApp.Collections.MessagesCollection()
-    var inboxView = new SwapApp.Views.InboxView({collection: filteredMessageCollection, el: $('#user-content'), baseCollection: SwapApp.userMessageCollection}
+    var inboxView = new SwapApp.Views.InboxView({collection: SwapApp.filteredMessageCollection, el: $('#user-content'), baseCollection: SwapApp.userMessageCollection}
         )
 
 
