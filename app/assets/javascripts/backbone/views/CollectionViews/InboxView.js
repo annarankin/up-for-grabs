@@ -21,7 +21,7 @@ SwapApp.Views.InboxView = Backbone.View.extend({
     //setting read status of all messages in this collection to 'read'
     this.collection.each(function(el) {
       if (el.attributes.read_status === false) {
-        el.save({read_status: true})
+        el.save({read_status: true},{merge: true, wait: true})
         // that.options.baseCollection.add(el,{merge: true, wait: true})
       }
     });
@@ -77,7 +77,7 @@ SwapApp.Views.InboxView = Backbone.View.extend({
     newMessage.message = $('#message-reply').val()
     newMessage.user_id = $(event.target).data('id')
     newMessage.sender_id = SwapApp.currentUser.get('id')
-    newMessage.read_status = true
+    // newMessage.read_status = true
     this.options.baseCollection.create(newMessage, {wait: true})
   },
   addMessage: function(model) {
