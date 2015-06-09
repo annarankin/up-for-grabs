@@ -21,9 +21,8 @@ SwapApp.Views.InboxView = Backbone.View.extend({
     //setting read status of all messages in this collection to 'read'
     this.collection.each(function(el) {
       if (el.attributes.read_status === false) {
-        el.set({read_status: true})
-        debugger
-        that.options.baseCollection.add(el,{merge: true, wait: true})
+        el.save({read_status: true})
+        // that.options.baseCollection.add(el,{merge: true, wait: true})
       }
     });
 
