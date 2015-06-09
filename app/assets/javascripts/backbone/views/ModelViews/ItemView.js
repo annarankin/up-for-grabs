@@ -13,7 +13,8 @@ SwapApp.Views.ItemView = Backbone.View.extend({
     'click .delete-item': 'deleteItem',
     'click [data-action="edit-item-save"]' : 'saveEdit',
     'click [data-action="favorite-item"]' : 'toggleFavorite',
-    'click [data-action="user-popup"]' : 'userPopup'
+    'click [data-action="user-popup"]' : 'userPopup',
+    'click [data-action="send-message"]' : 'newMessage'
   },
   closeModal: function() {
     $('#editItemModal').remove();
@@ -21,6 +22,7 @@ SwapApp.Views.ItemView = Backbone.View.extend({
   template: $('[data-template="user-item-card"]').html(),
   guestTemplate: $('[data-template="item-card"]').html(),
   editTemplate: $('[data-template="edit-item-card"]').html(),
+  userPopupTemplate: $('[data-template="edit-item-card"]').html(),
   render: function(){
     // debugger
     if (SwapApp.currentUser && SwapApp.currentUser.get('id') == this.model.attributes.user.id) {
@@ -114,5 +116,6 @@ SwapApp.Views.ItemView = Backbone.View.extend({
   },
   userPopup: function() {
     console.log('display user modal yeah')
-  }
+  },
+  newMessage: function(event) {}
 })

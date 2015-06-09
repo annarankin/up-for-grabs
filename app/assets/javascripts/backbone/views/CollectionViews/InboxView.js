@@ -6,9 +6,11 @@ SwapApp.Views.InboxView = Backbone.View.extend({
     this.options.filter = {}
     this.renderForm();
     this.listenTo(this.collection, 'reset', this.render)
+    this.listenTo(this.collection, 'add', this.render)
+    this.listenTo(this, 'replyAdded', this.filterMessages)
     // this.listenTo(SwapApp.event_bus, 'newMessage', this.changeInboxNew)
     // this.listenTo(SwapApp.event_bus, 'newMessage', this.filterMessages)
-    this.listenTo(this.options.baseCollection, 'change', this.announce)
+    // this.listenTo(this.options.baseCollection, 'add', this.filterMessages)
   },
   events: {
     'click [data-action="view-message"]' : 'filterMessages',
@@ -70,7 +72,11 @@ SwapApp.Views.InboxView = Backbone.View.extend({
     newMessage.user_id = $(event.target).data('id')
     newMessage.sender_id = SwapApp.currentUser.get('id')
     // newMessage.read_status = true
-    this.options.baseCollection.create(newMessage, {wait: true})
+    // this.options.baseCollection.create(newMessage, {wait: true})
+    this.collection.create(newMessage, {wait: true})
+    // var data = {}
+    // data.target = $('[data-action="message-reply-submit"]')
+    // this.trigger('replyAdded', data)
   },
   addMessage: function(model) {
     // console.log('Message addeddddd')
