@@ -17,14 +17,16 @@ module Api
       render json: new_message.to_json(include: {sender: {only: [:name, :id]}})
     end
 
-    def show
-
+    def update
+      message = Message.find(params[:id])
+      message.update(jam)
+      render json: message.to_json(include: {sender: {only: [:name, :id]}})
     end
 
     private
     def jam
 
-      params.permit(:user_id,:sender_id, :message, :read)
+      params.permit(:user_id,:sender_id, :message, :read_status)
 
     end
 

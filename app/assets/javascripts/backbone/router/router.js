@@ -4,13 +4,15 @@ SwapApp.Routers.Router = Backbone.Router.extend({
   initialize: function (option) {
     // anything we want to happen when the page is loaded, before looking for a BB route or starting the history/whatnot. Probably a good idea to empty out dat DOM
     console.log('Router revved sufficently')
-    // $("#main-content").empty();
+    
+    // Setting up 'globalishly' accessible variables   
     SwapApp.currentUser = new SwapApp.Models.User();
+    SwapApp.newMessages = false
+    // setting up an 'event bus' that we can use to trigger and listen to events from every view in the app
+    SwapApp.event_bus = _({}).extend(Backbone.Events);
     // Setting up a globalish collection of all user messages and a view to keep on checking if there are new ones.
     SwapApp.userMessageCollection = new SwapApp.Collections.MessagesCollection()
-    SwapApp.readStatusView = new SwapApp.Views.ReadStatusView({collection: SwapApp.userMessageCollection})
-    
-    // this.listenTo(this, 'route', function(e){console.log(e)})
+    SwapApp.readStatusView = new SwapApp.Views.ReadStatusView({collection: SwapApp.userMessageCollection})    
   },
   routes: {
     '': 'index',

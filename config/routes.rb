@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       resources :closets, except: [:new, :edit]
       resources :wishlists, except: [:new, :edit, :update]
       resources :favorites, except: [:new, :edit, :update]
-      resources :messages, except: [:new, :edit, :update]
+      resources :messages, except: [:new, :edit]
     end
     resources :closets, except: [:new, :edit] do
       resources :items, except: [:new, :edit]
