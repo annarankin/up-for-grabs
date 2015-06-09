@@ -29,7 +29,7 @@ SwapApp.Views.ReadStatusView = Backbone.View.extend({
       console.log('Unread message!')
       SwapApp.newMessages = true
       // use the global 'event bus' to trigger a global 'newMessage' event, which other views can listen for
-      SwapApp.event_bus.trigger('newMessage', newMessage)
+      SwapApp.event_bus.trigger('newMessage', model)
     } 
   },
   checkForNewMessages: function() {
