@@ -6,7 +6,9 @@ SwapApp.Views.ReadStatusView = Backbone.View.extend({
     // Checking the server for new messages every 7 seconds
     setInterval(function() {
       console.log('fetching from soiver')
-      that.collection.fetch();
+      that.collection.fetch()//.done(function(data) {
+      //   console.log(data)
+      // });
     }, 7000)
     //listening for new additions, telling it to check for newness 
     this.listenTo(this.collection, 'add', this.checkForNewMessages)
@@ -15,7 +17,7 @@ SwapApp.Views.ReadStatusView = Backbone.View.extend({
   },
   checkForNewMessages: function(model) {
     // checking to see if model's 'read status' is true or false and if the newMessage status for the whole view is already true
-    if (!model.attributes.read_status && SwapApp.newMessages === false) {
+    if (!model.attributes.read_status && SwapApp.newMessages === false && model.attributes.id != SwapApp.currentUser.get('id')) {
       console.log('Unread message!')
       SwapApp.newMessages = true
       // use the global 'event bus' to trigger a global 'newMessage' event, which other views can listen for
