@@ -21,7 +21,7 @@
 //= require_tree ./backbone/collections/
 //= require_tree ./backbone/views/ModelViews
 //= require_tree ./backbone/views/CollectionViews
-//= require_tree ./backbone/router/
+//= require ./backbone/router/router
 
 
 

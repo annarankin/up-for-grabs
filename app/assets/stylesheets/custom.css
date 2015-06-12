@@ -139,3 +139,7 @@ footer {
 .favorite .favorite-item {
   color: gold;
 }
+
+.guest-items form {
+  text-align: center
+}
